@@ -15,7 +15,6 @@ namespace WindowsFormsApp1 {
         }
 
         private void btButton_Click(object sender, EventArgs e) {
-            //tbNum1.Text = "楽しいC#！！！";
 
             //tbAns.Text = (int.Parse(tbNum1.Text) + int.Parse(tbNum2.Text)).ToString();
 
