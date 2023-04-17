@@ -23,5 +23,19 @@ namespace WindowsFormsApp1 {
             int sum = num1 + num2;
             tbAns.Text = sum.ToString();
         }
+
+        private void button1_Click(object sender, EventArgs e) {
+
+            int x = (int)nudX.Value;
+            int y = (int)nudY.Value;
+            int z = 1;
+
+            for (int i = 0; i < y; i++)
+            {
+                z = z * x;
+            }
+
+            tbPow.Text = z.ToString();
+        }
     }
 }
