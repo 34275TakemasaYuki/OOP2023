@@ -26,16 +26,18 @@ namespace WindowsFormsApp1 {
 
         private void button1_Click(object sender, EventArgs e) {
 
-            int x = (int)nudX.Value;
-            int y = (int)nudY.Value;
-            int z = 1;
+            //int x = (int)nudX.Value;
+            //int y = (int)nudY.Value;
+            //int z = 1;
 
-            for (int i = 0; i < y; i++)
-            {
-                z = z * x;
-            }
+            //for (int i = 0; i < y; i++)
+            //{
+            //    z = z * x;
+            //}
 
-            tbPow.Text = z.ToString();
+            //tbPow.Text = z.ToString();
+
+            tbPow.Text = Math.Pow((double)nudX.Value , (double)nudY.Value).ToString();
         }
     }
 }
