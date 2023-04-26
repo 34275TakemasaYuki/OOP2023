@@ -14,6 +14,7 @@ namespace BallApp {
         private double posY;    //ｙ座標
         private double moveX;   //移動量（ｘ方向）
         private double moveY;   //移動量（ｙ方向）
+        private int count;
 
         //コンストラクタ
         public Obj(double Posx, double PosY, string Path) {
@@ -28,6 +29,7 @@ namespace BallApp {
         public double PosY { get => posY; set => posY = value; }
         public double MoveX { get => moveX; set => moveX = value; }
         public double MoveY { get => moveY; set => moveY = value; }
+        public int Count { get => count; set => count = value; }
 
 
         //抽象メソッド

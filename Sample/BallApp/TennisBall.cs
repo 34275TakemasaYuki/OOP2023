@@ -9,9 +9,12 @@ namespace BallApp {
 
         //フィールド
         Random random = new Random();   //乱数インスタンス
+        private static int ballCnt = 0;
+
+        public static int BallCnt { get => ballCnt; set => ballCnt = value; }
 
         //コンストラクタ
-        public TennisBall(double xp, double yp) : base(xp, yp, @"pic\tennis_ball.png") {
+        public TennisBall(double xp, double yp) : base(xp, yp,@"pic\tennis_ball.png") {
 
             int rndX = random.Next(-25, 25);
             MoveX = (rndX != 0 ? rndX : 1); //乱数で移動量を設定
