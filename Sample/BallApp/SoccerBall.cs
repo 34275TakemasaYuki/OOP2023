@@ -9,7 +9,7 @@ namespace BallApp {
     class SoccerBall :Obj{
         //フィールド
         Random random = new Random();   //乱数インスタンス
-        public static int ballCnt = 0;
+        private static int ballCnt = 0;
 
         //コンストラクタ
         public SoccerBall( double xp, double yp) : base(xp, yp,@"pic\soccer_ball.png") {
@@ -19,6 +19,7 @@ namespace BallApp {
 
             int rndY = random.Next(-25, 25);
             MoveY = (rndY != 0 ? rndY : 1); //乱数で移動量を設定
+            BallCnt++;
         }
 
         public static int BallCnt { get => ballCnt; set => ballCnt = value; }

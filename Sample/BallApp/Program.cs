@@ -9,8 +9,10 @@ using System.Windows.Forms;
 namespace BallApp {
     class Program : Form {
 
+        Bar bar;            //Barインスタンス生成
+        PictureBox pbBar;   //Bar表示用
+
         private Timer moveTimer;    //タイマー用 
-        private PictureBox pb;
         private List<Obj> balls = new List<Obj>();    //ボールインスタンス格納用
         private List<PictureBox> pbs = new List<PictureBox>();      //表示用
 
@@ -19,11 +21,20 @@ namespace BallApp {
         }
 
         public Program() {
+            //フォーム関連の処理
             this.Size = new Size(800, 600);
             this.BackColor = Color.Green;
             this.Text = "BallGame";
             this.MouseClick += Program_MouseClick;
             this.KeyDown += Program_KeyDown;
+
+            bar = new Bar(500,500);
+            pbBar = new PictureBox();
+            pbBar.Size = new Size(150, 10);
+            pbBar.Image = bar.Image;
+            pbBar.Location = new Point((int)bar.PosX, (int)bar.PosY); //画像の位置
+            pbBar.SizeMode = PictureBoxSizeMode.StretchImage;  //画像の表示モード
+            pbBar.Parent = this;
 
             moveTimer = new Timer();
             moveTimer.Interval = 10; //タイマーのインターバル（ms）
@@ -32,25 +43,24 @@ namespace BallApp {
 
         //キーが押された時のイベントハンドラ
         private void Program_KeyDown(object sender, KeyEventArgs e) {
-           
+            bar.Move(e.KeyData);
+            pbBar.Location = new Point((int)bar.PosX, (int)bar.PosY); //画像の位置
         }
 
         //マウスクリック時のイベントハンドラ
         private void Program_MouseClick(object sender, MouseEventArgs e) {
             Obj ballObj = null;
-            pb = new PictureBox();
+            PictureBox pb = new PictureBox();
             //ボールインスタンス生成
             if (e.Button == MouseButtons.Left)
             {
                 ballObj = new SoccerBall(e.X - 25, e.Y - 25);
                 pb.Size = new Size(50, 50); //画像の表示サイズ
-                SoccerBall.BallCnt++;
             }
             else if (e.Button == MouseButtons.Right)
             {
                 ballObj = new TennisBall(e.X - 25, e.Y - 25);
                 pb.Size = new Size(25, 25); //画像の表示サイズ
-                TennisBall.BallCnt++;
             }
 
             pb.Image = ballObj.Image;
@@ -61,7 +71,7 @@ namespace BallApp {
             balls.Add(ballObj);
             pbs.Add(pb);
 
-            this.Text = "サッカーボールの数:" + SoccerBall.BallCnt + ":テニスボールの数" + TennisBall.BallCnt;
+            this.Text = "サッカーボールの数:" + SoccerBall.BallCnt + ":テニスボールの数:" + TennisBall.BallCnt;
             moveTimer.Start();  //タイマースタート
         }
 
