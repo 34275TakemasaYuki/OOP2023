@@ -9,12 +9,28 @@ namespace ProductSample {
     //商品クラス
     class Program {
         static void Main(string[] args) {
+            #region P26のサンプルプログラム
             //インスタンスの生成
-            Product karinto = new Product(123,"かりんとう",180);
-            Product daihuku = new Product(235,"大福もち",160);
+            //Product karinto = new Product(123,"かりんとう",180);
+            //Product daihuku = new Product(235,"大福もち",160);
 
-            Console.WriteLine("かりんとうの税込み" + karinto.GetPriceIncludingTax() + "円");
-            Console.WriteLine("大福もちの税込み" + daihuku.GetPriceIncludingTax() + "円");
+            //Console.WriteLine("かりんとうの税込み" + karinto.GetPriceIncludingTax() + "円");
+            //Console.WriteLine("大福もちの税込み" + daihuku.GetPriceIncludingTax() + "円");
+            #endregion
+
+            DateTime date = DateTime.Today;
+
+            //10日後を求める
+            DateTime daysAfter10 = date.AddDays(10);
+            //10日前を求める
+            DateTime daysBefore10 = date.AddDays(-10);
+            //1月前を求める
+            DateTime monthsBefore1 = date.AddMonths(-1);
+
+            Console.WriteLine("今日の日付" + date.Year + "年" + date.Month + "月" + date.Day + "日");
+            Console.WriteLine("10日後：" + date.Year + "年" + date.Month + "月" + daysAfter10.Day + "日");
+            Console.WriteLine("10日前：" + date.Year + "年" + monthsBefore1.Month + "月" + daysBefore10.Day + "日");
+
         }
     }
 }
