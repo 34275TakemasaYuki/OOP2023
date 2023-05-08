@@ -22,15 +22,24 @@ namespace ProductSample {
 
             //10日後を求める
             DateTime daysAfter10 = date.AddDays(10);
-            //10日前を求める
-            DateTime daysBefore10 = date.AddDays(-10);
-            //1月前を求める
-            DateTime monthsBefore1 = date.AddMonths(-1);
 
             Console.WriteLine("今日の日付" + date.Year + "年" + date.Month + "月" + date.Day + "日");
-            Console.WriteLine("10日後：" + date.Year + "年" + date.Month + "月" + daysAfter10.Day + "日");
-            Console.WriteLine("10日前：" + date.Year + "年" + monthsBefore1.Month + "月" + daysBefore10.Day + "日");
+            Console.WriteLine("10日後：" + date.AddDays(10).Year + "年" + date.AddDays(10).Month + "月" + date.AddDays(10).Day + "日");
+            Console.WriteLine("10日前：" + date.AddDays(-10).Year + "年" + date.AddDays(-10).Month + "月" + date.AddDays(-10).Day + "日");
 
+            Console.WriteLine("誕生日を入力");
+
+            Console.Write("西暦：");
+            int year = int.Parse(Console.ReadLine());
+
+            Console.Write("月：");
+            int month = int.Parse(Console.ReadLine());
+
+            Console.Write("日：");
+            int day = int.Parse(Console.ReadLine());
+
+            
+            Console.WriteLine("あなたは生まれてから今日まで" + "日目です");
         }
     }
 }
