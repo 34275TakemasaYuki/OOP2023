@@ -29,19 +29,22 @@ namespace ProductSample {
 
             Console.WriteLine("誕生日を入力");
 
+            //西暦の入力
             Console.Write("西暦：");
             int year = int.Parse(Console.ReadLine());
-
+            //月の入力
             Console.Write("月：");
             int month = int.Parse(Console.ReadLine());
-
+            //日の入力
             Console.Write("日：");
             int day = int.Parse(Console.ReadLine());
 
+            //DateTimeを計算してTimeSpanを取得
             DateTime baseDay = new DateTime(year, month, day);
             TimeSpan span = date - baseDay;
             Console.WriteLine("あなたは生まれてから今日まで" + span.TotalDays + "日目です");
 
+            //配列に格納した曜日をDayOfWeekで指定
             DayOfWeek result = baseDay.DayOfWeek;
             string[] weeks = { "日", "月", "火", "水", "木", "金", "土" };
             string week = weeks[(int)result];
