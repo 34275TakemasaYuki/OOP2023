@@ -38,8 +38,9 @@ namespace ProductSample {
             Console.Write("日：");
             int day = int.Parse(Console.ReadLine());
 
-            
-            Console.WriteLine("あなたは生まれてから今日まで" + "日目です");
+            DateTime baseDay = new DateTime(year, month, day);
+            TimeSpan span = date - baseDay;
+            Console.WriteLine("あなたは生まれてから今日まで" + span.TotalDays + "日目です");
         }
     }
 }
