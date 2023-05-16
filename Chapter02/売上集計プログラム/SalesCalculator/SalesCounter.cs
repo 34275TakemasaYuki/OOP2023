@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace SalesCalculator {
    public class SalesCounter {
 
-        private List<Sale> _sales;
+        public static List<Sale> _sales;
 
         //コンストラクタ
-        public SalesCounter(List<Sale> sales) {
-            _sales = sales;
+        public SalesCounter(string filePath) {
+            _sales = ReadSales(filePath);
         }
 
         //店舗別売り上げを求める
@@ -29,7 +29,7 @@ namespace SalesCalculator {
         }
 
         //売上データを読み込み、Saleオブジェクトのリストを返す
-        public static List<Sale> ReadSales(string filePath) {
+        private List<Sale> ReadSales(string filePath) {
             List<Sale> sales = new List<Sale>();//売上データを格納する
             string[] lines = File.ReadAllLines(filePath);//ファイルからすべてのデータを読み込む
 
