@@ -8,10 +8,28 @@ namespace Exercise03 {
     class Program {
         static void Main(string[] args) {
             var sales = new SalesCounter(@"data\sales.csv");
-            var amountPerStore = sales.GetPerStoreSales();
-            foreach (var obj in amountPerStore)
+            IDictionary<string, int> amount;
+            Console.WriteLine("**売上集計**");
+            Console.WriteLine("1:店舗別売上");
+            Console.WriteLine("2:商品カテゴリー別売上");
+            Console.Write(">");
+            int ans = int.Parse(Console.ReadLine());
+
+            if (ans == 1)
             {
-                Console.WriteLine("{0} {1:C}", obj.Key, obj.Value);
+                amount = sales.GetPerStoreSales();
+                foreach (var obj in amount)
+                {
+                    Console.WriteLine("{0} {1:C}", obj.Key, obj.Value);
+                }
+            }
+            else
+            {
+                amount = sales.GetPerCategorySales();
+                foreach (var obj in amount)
+                {
+                    Console.WriteLine("{0} {1:C}", obj.Key, obj.Value);
+                }
             }
         }
     }
