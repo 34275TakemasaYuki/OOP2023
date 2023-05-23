@@ -22,22 +22,26 @@ namespace Exercise01 {
             Console.WriteLine("-----");
 
             // 3.1.4
-            NewMethod(numbers);
+            Exercise1_4(numbers);
         }
 
         private static void Exercise1_1(List<int> numbers) {
-            
+            var exists = numbers.Exists(n => n % 8 == 0 || n % 9 == 0);
+            if (exists)
+            {
+                Console.WriteLine("存在します");
+            }
         }
 
         private static void Exercise1_2(List<int> numbers) {
-           
+            numbers.ForEach(n => Console.WriteLine(n / 2.0));
         }
 
         private static void Exercise1_3(List<int> numbers) {
             
         }
 
-        private static void NewMethod(List<int> numbers) {
+        private static void Exercise1_4(List<int> numbers) {
             
         }
     }
