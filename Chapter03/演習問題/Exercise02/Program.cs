@@ -57,7 +57,10 @@ namespace Exercise02 {
         private static void Exercise2_4(List<string> names) {
             Console.WriteLine("*****3-4*****");
             var city = names.Where(s => s.StartsWith("B")).Select(s => s.Length);
-            Console.WriteLine(city);
+            foreach (var item in city)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
