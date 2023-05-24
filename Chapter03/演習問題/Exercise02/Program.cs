@@ -27,14 +27,7 @@ namespace Exercise02 {
             while (line != "")
             {
                 index = names.FindIndex(s => s == line);
-                if (index != -1)
-                {
-                    Console.WriteLine(index);
-                }
-                else
-                {
-                    Console.WriteLine(index);
-                }
+                Console.WriteLine(index);
                 line = Console.ReadLine();
             }
         }
