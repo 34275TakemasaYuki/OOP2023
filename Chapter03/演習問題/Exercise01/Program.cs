@@ -38,19 +38,11 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_3(List<int> numbers) {
-            var query = numbers.Where(num => num >= 50);
-            foreach (var num in query)
-            {
-                Console.WriteLine(num);
-            }
+            numbers.Where(num => num >= 50).ToList().ForEach(Console.WriteLine);
         }
 
         private static void Exercise1_4(List<int> numbers) {
-            var query = numbers.Select(num => num * 2).ToList();
-            foreach (var num in query)
-            {
-                Console.WriteLine(num);
-            }
+            numbers.Select(num => num >= 50).ToList().ForEach(Console.WriteLine);
         }
     }
 }
