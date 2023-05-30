@@ -24,14 +24,20 @@ namespace Exercise01 {
         }
 
         //4.1.3
-        //public YearMonth AddOneMonth() {
-          //  var YearMonth = new YearMonth(this.Year ,this.Month);
-            
-        //}
+        public YearMonth AddOneMonth() {
+            if (Month == 12)
+            {
+                return new YearMonth(Year + 1, 1);
+            }
+            else
+            {
+                return new YearMonth(Year, Month + 1);
+            }
+        }
 
         //4.1.4
-        //public override string ToString() {
-          //  return base.ToString();
-        //}
+        public override string ToString() {
+            return Year + "年" + Month + "月";
+        }
     }
 }
