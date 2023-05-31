@@ -28,7 +28,7 @@ namespace Exercise02 {
 
 
             // 4.2.5
-            Exercise2_5(ymCollection);
+           // Exercise2_5(ymCollection);
         }
 
         private static void Exercise2_2(YearMonth[] ymCollection) {
@@ -57,12 +57,12 @@ namespace Exercise02 {
             }
             else
             {
-                Console.WriteLine(FindFirst21C(ymCollection));
+                Console.WriteLine(FindFirst21C(ymCollection).Year);
             }
         }
 
-        private static void Exercise2_5(YearMonth[] ymCollection) {
-
-        }
+        //private static void Exercise2_5(YearMonth[] ymCollection) {
+          // var n =  ymCollection.ForEach(s => s.AddOneMonth()).ToArray();
+        //}
     }
 }
