@@ -28,7 +28,7 @@ namespace Exercise02 {
 
 
             // 4.2.5
-           // Exercise2_5(ymCollection);
+            Exercise2_5(ymCollection);
         }
 
         private static void Exercise2_2(YearMonth[] ymCollection) {
@@ -61,8 +61,10 @@ namespace Exercise02 {
             }
         }
 
-        //private static void Exercise2_5(YearMonth[] ymCollection) {
-          // var n =  ymCollection.ForEach(s => s.AddOneMonth()).ToArray();
-        //}
+        private static void Exercise2_5(YearMonth[] ymCollection) {
+            var array = ymCollection.Select(ym => ym.AddOneMonth()).ToArray();
+
+            Exercise2_2(array);
+        }
     }
 }
