@@ -32,22 +32,33 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_2(YearMonth[] ymCollection) {
-            foreach (var item in ymCollection)
+            foreach (var ym in ymCollection)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(ym);
             }
         }
 
         // 4.2.3
-        //static YearMonth FindFirst21C(YearMonth[] yms) {
-          //  foreach (var find in yms)
-            //{
-                
-            //}
-        //}
+        static YearMonth FindFirst21C(YearMonth[] yms) {
+            foreach (var ym in yms)
+            {
+                if (ym.Is21Century)
+                {
+                    return ym;
+                }
+            }
+            return null;
+        }
 
         private static void Exercise2_4(YearMonth[] ymCollection) {
-
+            if (FindFirst21C(ymCollection) == null)
+            {
+                Console.WriteLine("２１世紀のデータはありません");
+            }
+            else
+            {
+                Console.WriteLine(FindFirst21C(ymCollection));
+            }
         }
 
         private static void Exercise2_5(YearMonth[] ymCollection) {
