@@ -7,6 +7,14 @@ using System.Threading.Tasks;
 namespace Exercise02 {
     class Program {
         static void Main(string[] args) {
+            int num;
+            Console.Write("数字を入力:");
+            var str1 = Console.ReadLine();
+
+            if (int.TryParse(str1, out num))
+            {
+                Console.WriteLine(num.ToString("#,0"));
+            }
         }
     }
 }
