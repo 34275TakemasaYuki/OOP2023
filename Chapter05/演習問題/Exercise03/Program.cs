@@ -27,11 +27,13 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_1(string text) {
-            var contains = text.Contains(" ");
+            var count = text.Count(s => s.ToString().Contains(" "));
+            Console.WriteLine("空白は" + count + "回");
         }
 
         private static void Exercise3_2(string text) {
-           
+            var replaced = text.Replace("big", "small");
+            Console.WriteLine(replaced);
         }
 
         private static void Exercise3_3(string text) {
