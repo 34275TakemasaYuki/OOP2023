@@ -37,6 +37,14 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_3(string text) {
+            string[] words = text.Split(' ');
+            var count = 0;
+            foreach (var word in words)
+            {
+                count++;
+                Console.WriteLine(word);
+            }
+            Console.WriteLine("単語の個数：" + count);
         }
 
         private static void Exercise3_4(string text) {
