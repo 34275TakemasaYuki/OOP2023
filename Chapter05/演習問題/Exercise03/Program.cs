@@ -58,6 +58,19 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_5(string text) {
+            string[] words = text.Split(' ');
+            var sb = new StringBuilder();
+            foreach (var word in words)
+            {
+                if (word == words.Last())
+                {
+                    sb.Append(word);
+                    break;
+                }
+                sb.Append(word).Append(" ");
+            }
+            var newText = sb.ToString();
+            Console.WriteLine(newText);
         }
     }
 }
