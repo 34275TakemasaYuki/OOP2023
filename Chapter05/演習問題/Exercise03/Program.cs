@@ -27,7 +27,7 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_1(string text) {
-            var count = text.Count(s => s.ToString().Contains(" "));
+            var count = text.Count(c => c.ToString().Contains(" "));
             Console.WriteLine("空白は" + count + "回");
         }
 
@@ -67,7 +67,7 @@ namespace Exercise03 {
                     sb.Append(word);
                     break;
                 }
-                sb.Append(word).Append(" ");
+                sb.Append(word).Append(' ');
             }
             var newText = sb.ToString();
             Console.WriteLine(newText);
