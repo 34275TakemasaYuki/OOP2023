@@ -60,6 +60,8 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_4(List<Book> books) {
+            var booksObj = books.Find(x => x.Price >= 4000);
+            Console.WriteLine(booksObj.Title);
         }
 
         private static void Exercise2_5(List<Book> books) {
