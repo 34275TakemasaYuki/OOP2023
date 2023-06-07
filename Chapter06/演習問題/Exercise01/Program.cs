@@ -49,6 +49,8 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_5(int[] numbers) {
+            var distinctNums = numbers.Distinct();
+            Console.WriteLine(distinctNums.Where(n => n > 10).Count());
         }
     }
 }
