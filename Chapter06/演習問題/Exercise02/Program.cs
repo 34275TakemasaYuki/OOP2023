@@ -50,10 +50,13 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_2(List<Book> books) {
-            Console.WriteLine(books.Where(x => x.Title.Contains("C#")).Count());
+            var booksObj =books.Where(x => x.Title.Contains("C#")).Count();
+            Console.WriteLine(booksObj + "冊");
         }
 
         private static void Exercise2_3(List<Book> books) {
+            var booksObj = books.Where(x => x.Title.Contains("C#")).Average(x => x.Pages);
+            Console.WriteLine(booksObj + "枚");
         }
 
         private static void Exercise2_4(List<Book> books) {
