@@ -41,6 +41,11 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_4(int[] numbers) {
+            var orderNums = numbers.OrderBy(n => n);
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine(orderNums.ElementAt(i));
+            }
         }
 
         private static void Exercise1_5(int[] numbers) {
