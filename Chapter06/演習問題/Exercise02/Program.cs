@@ -65,6 +65,8 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_5(List<Book> books) {
+            var booksObj = books.FindAll(x => x.Price < 4000);
+            Console.WriteLine(booksObj.Max(x => x.Pages));
         }
 
         private static void Exercise2_6(List<Book> books) {
