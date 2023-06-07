@@ -30,7 +30,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(int[] numbers) {
-            Console.WriteLine(numbers.Last() + "," + numbers.Last());
+            Console.WriteLine(numbers.ElementAt(numbers.Count()-2) + "," + numbers.Last());
         }
 
         private static void Exercise1_3(int[] numbers) {
