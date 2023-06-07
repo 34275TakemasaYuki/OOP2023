@@ -42,6 +42,11 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_1(List<Book> books) {
+            var booksObj = books.Where(x => x.Title == "ワンダフル・C#ライフ");
+            foreach (var book in booksObj)
+            {
+                Console.WriteLine("{0}円,{1}枚", book.Price, book.Pages);
+            }
         }
 
         private static void Exercise2_2(List<Book> books) {
