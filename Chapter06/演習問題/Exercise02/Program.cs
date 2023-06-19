@@ -42,8 +42,11 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_1(List<Book> books) {
-            var booksObj = books.Find(x => x.Title == "ワンダフル・C#ライフ");
-            Console.WriteLine("{0}円,{1}枚", booksObj.Price, booksObj.Pages);
+            var booksObj = books.Where(x => x.Title == "ワンダフル・C#ライフ");
+            foreach (var book in booksObj)
+            {
+                Console.WriteLine("{0}円,{1}枚", book.Price, book.Pages);
+            }
         }
 
         private static void Exercise2_2(List<Book> books) {
@@ -58,12 +61,13 @@ namespace Exercise02 {
 
         private static void Exercise2_4(List<Book> books) {
             var booksObj = books.Find(x => x.Price >= 4000);
-            Console.WriteLine(booksObj.Title);
+            if (booksObj != null)
+                Console.WriteLine(booksObj.Title);
         }
 
         private static void Exercise2_5(List<Book> books) {
-            var booksObj = books.FindAll(x => x.Price < 4000);
-            Console.WriteLine(booksObj.Max(x => x.Pages) + "枚");
+            var booksObj = books.FindAll(x => x.Price < 4000).Max(x => x.Pages);
+            Console.WriteLine(booksObj + "枚");
         }
 
         private static void Exercise2_6(List<Book> books) {
