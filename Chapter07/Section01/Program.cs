@@ -22,7 +22,11 @@ namespace Section01 {
 
                 Console.Write("県庁所在地:");
                 capital = Console.ReadLine();
-                if (!cityDict.ContainsKey(city) || !cityDict.ContainsKey(capital))
+                if (!cityDict.ContainsKey(city))
+                {
+                    cityDict[city] = capital;
+                }
+                else if(!cityDict.ContainsValue(capital))
                 {
                     cityDict[city] = capital;
                 }
