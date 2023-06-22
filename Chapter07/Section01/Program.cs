@@ -10,6 +10,7 @@ namespace Section01 {
             string city;
             string capital;
             string cityCheck;
+            string ans;
             var cityDict = new Dictionary<string, string>();
 
             Console.WriteLine("県庁所在地の登録");
@@ -28,7 +29,10 @@ namespace Section01 {
                 }
                 else if(!cityDict.ContainsValue(capital))
                 {
-                    cityDict[city] = capital;
+                    Console.Write("{0}の情報を上書きしますか？(y/n):", city);
+                    ans = Console.ReadLine();
+                    if(ans == "y")
+                        cityDict[city] = capital;
                 }
                 else
                 {
