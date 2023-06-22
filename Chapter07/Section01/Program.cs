@@ -10,7 +10,6 @@ namespace Section01 {
             string city;
             string capital;
             string cityCheck;
-            int flag = 0;
             var cityDict = new Dictionary<string, string>();
 
             Console.WriteLine("県庁所在地の登録");
@@ -31,10 +30,9 @@ namespace Section01 {
                 {
                     Console.WriteLine("この情報はすでに登録されています。");
                 }
-                flag = 1;
             }
 
-            if (flag == 1)
+            if (cityDict.Count() != 0)
             {
                 Console.Write("確認する県名を入力:");
                 cityCheck = Console.ReadLine();
