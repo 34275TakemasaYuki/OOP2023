@@ -42,9 +42,25 @@ namespace Section01 {
 
             if (cityDict.Count() != 0)
             {
-                Console.Write("確認する県名を入力:");
-                cityCheck = Console.ReadLine();
-                Console.WriteLine("{0}です。", cityDict[cityCheck]);
+                Console.Write("1:一覧表示,2:県名検索→");
+                ans = Console.ReadLine();
+                if (ans == "1")
+                {
+                    foreach (var cityData in cityDict)
+                    {
+                        Console.WriteLine("{0}({1})",cityData.Key,cityData.Value);
+                    }
+                }
+                else if(ans == "2")
+                {
+                    Console.Write("確認する県名を入力:");
+                    cityCheck = Console.ReadLine();
+                    Console.WriteLine("{0}です。", cityDict[cityCheck]);
+                }
+                else
+                {
+                    Console.WriteLine("入力した値が違います。");
+                }
             }
         }
     }
