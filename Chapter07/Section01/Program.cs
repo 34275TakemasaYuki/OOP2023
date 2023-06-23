@@ -7,55 +7,64 @@ using System.Threading.Tasks;
 namespace Section01 {
     class Program {
         static void Main(string[] args) {
+            string pref;
             string city;
-            string capital;
-            string cityCheck;
+            string prefCheck;
             string ans;
-            var cityDict = new Dictionary<string, string>();
+            int population;
+            var prefDict = new Dictionary<string, CityInfo>();
 
             Console.WriteLine("県庁所在地の登録");
             while (true)
             {
                 Console.Write("県名:");
-                city = Console.ReadLine();
-                if (city == "999")
+                pref = Console.ReadLine();
+                if (pref == "999")
                     break;
 
                 Console.Write("県庁所在地:");
-                capital = Console.ReadLine();
-                if (!cityDict.ContainsKey(city))
+                city = Console.ReadLine();
+                Console.Write("人口:");
+                population = int.Parse(Console.ReadLine());
+
+                if (!prefDict.ContainsKey(pref))
                 {
-                    cityDict[city] = capital;
-                }
-                else if(!cityDict.ContainsValue(capital))
-                {
-                    Console.Write("{0}の情報を上書きしますか？(y/n):", city);
-                    ans = Console.ReadLine();
-                    if(ans == "y")
-                        cityDict[city] = capital;
+                    prefDict[pref] = new CityInfo
+                    {
+                        City = city,
+                        Population = population,
+                    };
                 }
                 else
                 {
-                    Console.WriteLine("この情報はすでに登録されています。");
+                    Console.Write("{0}の情報を上書きしますか？(y/n):", pref);
+                    ans = Console.ReadLine();
+                    if(ans == "y")
+                        prefDict[pref] = new CityInfo
+                        {
+                            City = city,
+                            Population = population,
+                        };
                 }
             }
 
-            if (cityDict.Count() != 0)
+            if (prefDict.Count() != 0)
             {
                 Console.Write("1:一覧表示,2:県名検索→");
                 ans = Console.ReadLine();
                 if (ans == "1")
                 {
-                    foreach (var cityData in cityDict)
+                    var popularOrder = prefDict.OrderByDescending(n => n.Value.Population);
+                    foreach (var prefData in popularOrder)
                     {
-                        Console.WriteLine("{0}({1})",cityData.Key,cityData.Value);
+                        Console.WriteLine("{0}【{1},(人口:{2})】",prefData.Key,prefData.Value.City,prefData.Value.Population);
                     }
                 }
                 else if(ans == "2")
                 {
                     Console.Write("確認する県名を入力:");
-                    cityCheck = Console.ReadLine();
-                    Console.WriteLine("{0}です。", cityDict[cityCheck]);
+                    prefCheck = Console.ReadLine();
+                    Console.WriteLine("{0}(人口:{1}人)です。", prefDict[prefCheck].City,prefDict[prefCheck].Population);
                 }
                 else
                 {
@@ -63,5 +72,10 @@ namespace Section01 {
                 }
             }
         }
+    }
+
+    class CityInfo {
+       public string City { get; set; }
+       public int Population { get; set; }
     }
 }
