@@ -20,23 +20,21 @@ namespace Section02 {
                 Console.Write("県名:");
                 pref = Console.ReadLine();
                 if (pref == "999")
-                    break;
+                    break;  //999入力で繰り返し終了
 
                 Console.Write("市町村:");
                 city = Console.ReadLine();
                 Console.Write("人口:");
                 population = int.Parse(Console.ReadLine());
 
-                var ci = new CityInfo(city, population);
+                var ci = new CityInfo(city, population);    //CityInfoインスタンス生成
 
-                if (prefDict.ContainsKey(pref))
+
+                if (!prefDict.ContainsKey(pref))
                 {
-                    prefDict[pref].Add(ci);
+                    prefDict[pref] = new List<CityInfo>();  //県名が未登録なのでリスト作成
                 }
-                else
-                {
-                    prefDict[pref] = new List<CityInfo> { ci };
-                }
+                prefDict[pref].Add(ci); //リストにCityInfoインスタンスの要素を格納
             }
 
             if (prefDict.Count() != 0)
@@ -45,6 +43,7 @@ namespace Section02 {
                 ans = Console.ReadLine();
                 if (ans == "1")
                 {
+                    var popularOrder = prefDict.OrderByDescending(n => n.Value);//人口順に並べ替えてみる
                     foreach (var item in prefDict)
                     {
                         foreach (var term in item.Value)
@@ -59,12 +58,19 @@ namespace Section02 {
                     prefCheck = Console.ReadLine();
 
                     var prefPic = prefDict.Where(x => x.Key == prefCheck);
-                    foreach (var item in prefPic)
+                    if (prefPic.Count() != 0)
                     {
-                        foreach (var term in item.Value)
+                        foreach (var item in prefPic)
                         {
-                            Console.WriteLine("{0}(人口:{1}人)です。", term.City, term.Population);
+                            foreach (var term in item.Value)
+                            {
+                                Console.WriteLine("{0}(人口:{1}人)です。", term.City, term.Population);
+                            }
                         }
+                    }
+                    else
+                    {
+                        Console.WriteLine("指定した県名が存在しません。");
                     }
                 }
                 else
