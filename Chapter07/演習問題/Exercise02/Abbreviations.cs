@@ -62,11 +62,11 @@ namespace Exercise02 {
         }
 
         public IEnumerator<KeyValuePair<string, string>> GetEnumerator() {
-            throw new NotImplementedException();
+            return ((IEnumerable<KeyValuePair<string, string>>)_dict).GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator() {
-            throw new NotImplementedException();
+            return ((IEnumerable)_dict).GetEnumerator();
         }
     }
 }
