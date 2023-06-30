@@ -8,7 +8,8 @@ using System.Globalization;
 namespace Exercise01 {
     class Program {
         static void Main(string[] args) {
-            var dateTime = new DateTime(2019, 1, 15, 19, 48, 32);
+            var dateTime = DateTime.Now;
+            //var dateTime = new DateTime(2019, 1, 15, 19, 48, 32);
             DisplayDatePattern1(dateTime);
             DisplayDatePattern2(dateTime);
             DisplayDatePattern3(dateTime);
