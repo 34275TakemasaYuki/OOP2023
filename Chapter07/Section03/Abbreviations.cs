@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Section03 {
+namespace Exercise02 {
     // List 7-19
     // 略語と対応する日本語を管理するクラス
     class Abbreviations {
