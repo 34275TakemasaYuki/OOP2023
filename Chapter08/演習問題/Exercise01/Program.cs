@@ -29,8 +29,8 @@ namespace Exercise01 {
             //平成31年 1月15日(火曜日)
             var culture = new CultureInfo("ja-JP");
             culture.DateTimeFormat.Calendar = new JapaneseCalendar();
-
-            Console.WriteLine(dateTime.ToString("ggyy年 M月d日", culture));
+            DayOfWeek dayOfWeek = dateTime.DayOfWeek;
+            Console.WriteLine(dateTime.ToString("ggyy年 M月d日(dddd)", culture));
         }
 
         private static void DisplayDatePattern3_2(DateTime dateTime) {
