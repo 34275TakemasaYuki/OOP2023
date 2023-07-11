@@ -94,6 +94,8 @@ namespace CarReportSystem {
 
         private void Form1_Load_1(object sender, EventArgs e) {
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
+            btModifyReport.Enabled = false; //マスク処理
+            btDeleteReport.Enabled = false;
         }
 
         //レコードの選択時
@@ -108,6 +110,8 @@ namespace CarReportSystem {
 
         //更新ボタンイベントハンドラ
         private void btModifyReport_Click(object sender, EventArgs e) {
+            if (dgvCarReports.Rows.Count == 0)
+                return;
 
             var cr = new CarReport
             {
