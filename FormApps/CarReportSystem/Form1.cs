@@ -43,8 +43,13 @@ namespace CarReportSystem {
             };
 
             CarReports.Add(cr);
-            cbAuthor.Items.Add(cr.Author);
-            cbCarName.Items.Add(cr.CarName);
+
+            if(cbAuthor.Items.Contains(cr.Author))
+                cbAuthor.Items.Add(cr.Author);
+
+            if (cbAuthor.Items.Contains(cr.CarName))
+                cbCarName.Items.Add(cr.CarName);
+
             clearDialog();
             dgvCarReports.CurrentRow.Selected = false;
             buttonMask();

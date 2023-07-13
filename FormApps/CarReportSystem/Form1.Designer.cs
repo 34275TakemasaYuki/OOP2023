@@ -62,6 +62,10 @@ namespace CarReportSystem {
             this.ofdImageFileOpen = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsInfoText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.gbMaker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarReports)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCarImage)).BeginInit();
@@ -393,7 +397,9 @@ namespace CarReportSystem {
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ファイルToolStripMenuItem});
+            this.ファイルToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -456,6 +462,7 @@ namespace CarReportSystem {
             this.statusStrip1.Location = new System.Drawing.Point(0, 829);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(796, 22);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 23;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -464,6 +471,34 @@ namespace CarReportSystem {
             this.tsInfoText.Name = "tsInfoText";
             this.tsInfoText.Size = new System.Drawing.Size(118, 17);
             this.tsInfoText.Text = "toolStripStatusLabel1";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(57, 20);
+            this.toolStripMenuItem1.Text = "編集(&E)";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem4});
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(65, 20);
+            this.toolStripMenuItem2.Text = "ヘルプ(&H)";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Text = "色設定...";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem4.Text = "バージョン情報";
             // 
             // Form1
             // 
@@ -549,6 +584,10 @@ namespace CarReportSystem {
         private System.Windows.Forms.OpenFileDialog ofdImageFileOpen;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tsInfoText;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
     }
 }
 
