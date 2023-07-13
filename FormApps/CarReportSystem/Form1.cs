@@ -20,6 +20,18 @@ namespace CarReportSystem {
 
         //追加ボタンがクリックされた時のイベントハンドラー
         private void btAddReport_Click(object sender, EventArgs e) {
+            statasLabelDisp("");//表示クリア
+            if (cbAuthor.Text == "")
+            {
+                statasLabelDisp("編集者を入力してください");
+                return;
+            }
+            else if(cbCarName.Text == "")
+            {
+                statasLabelDisp("車名を入力してください");
+                return;
+            }
+
             var cr = new CarReport
             {
                 Date = dtpDate.Value,
@@ -31,8 +43,11 @@ namespace CarReportSystem {
             };
 
             CarReports.Add(cr);
-            
-            
+            cbAuthor.Items.Add(cr.Author);
+            cbCarName.Items.Add(cr.CarName);
+            clearDialog();
+            dgvCarReports.CurrentRow.Selected = false;
+            buttonMask();
         }
 
         //ラジオボタンで選択されているメーカーを返却
@@ -83,6 +98,7 @@ namespace CarReportSystem {
             }
         }
 
+        //画像追加ボタンイベントハンドラ
         private void btImageOpen_Click(object sender, EventArgs e) {
             ofdImageFileOpen.ShowDialog();
             pbCarImage.Image = Image.FromFile(ofdImageFileOpen.FileName);
@@ -90,12 +106,19 @@ namespace CarReportSystem {
 
         private void btDeleteReport_Click(object sender, EventArgs e) {
             CarReports.RemoveAt(dgvCarReports.CurrentRow.Index);
+            buttonMask();
         }
 
+        //システム起動時の処理
         private void Form1_Load_1(object sender, EventArgs e) {
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
-            btModifyReport.Enabled = false; //マスク処理
-            btDeleteReport.Enabled = false;
+            buttonMask();
+            statasLabelDisp("ここにメッセージが表示されます。");
+        }
+
+        //ステータスラベルのテキスト表示・非表示
+        private void statasLabelDisp(string msg) {
+            tsInfoText.Text = msg;
         }
 
         //レコードの選択時
@@ -124,6 +147,48 @@ namespace CarReportSystem {
             };
 
             CarReports[dgvCarReports.CurrentRow.Index] = cr;
+        }
+
+        //編集エリアのクリア
+        private void clearDialog() {
+            cbAuthor.Text = null;
+
+            foreach (var item in gbMaker.Controls)
+            {
+                if (((RadioButton)item).Checked)
+                {
+                    ((RadioButton)item).Checked = false;
+                    break;
+                }
+            }
+
+            cbCarName.Text = "";
+            tbReport.Text = "";
+            pbCarImage.Image = null;
+        }
+
+        //マスク処理メソッド
+        private void buttonMask() {
+            if (dgvCarReports.RowCount == 0)
+            {
+                btDeleteReport.Enabled = false;
+                btModifyReport.Enabled = false;
+            }
+            else
+            {
+                btDeleteReport.Enabled = true;
+                btModifyReport.Enabled = true;
+            }
+        }
+
+        //システム終了
+        private void 終了XToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
+        //画像削除ボタンイベントハンドラ
+        private void btImageDelete_Click(object sender, EventArgs e) {
+            pbCarImage.Image = null;
         }
     }
 }
