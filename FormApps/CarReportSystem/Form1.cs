@@ -26,7 +26,7 @@ namespace CarReportSystem {
                 statasLabelDisp("編集者を入力してください");
                 return;
             }
-            else if(cbCarName.Text == "")
+            else if (cbCarName.Text == "")
             {
                 statasLabelDisp("車名を入力してください");
                 return;
@@ -44,10 +44,10 @@ namespace CarReportSystem {
 
             CarReports.Add(cr);
 
-            if(cbAuthor.Items.Contains(cr.Author))
+            if (!cbAuthor.Items.Contains(cr.Author))
                 cbAuthor.Items.Add(cr.Author);
 
-            if (cbAuthor.Items.Contains(cr.CarName))
+            if (!cbCarName.Items.Contains(cr.CarName))
                 cbCarName.Items.Add(cr.CarName);
 
             clearDialog();
@@ -109,6 +109,7 @@ namespace CarReportSystem {
             pbCarImage.Image = Image.FromFile(ofdImageFileOpen.FileName);
         }
 
+        //削除ボタンイベントハンドラ
         private void btDeleteReport_Click(object sender, EventArgs e) {
             CarReports.RemoveAt(dgvCarReports.CurrentRow.Index);
             buttonMask();
@@ -194,6 +195,22 @@ namespace CarReportSystem {
         //画像削除ボタンイベントハンドラ
         private void btImageDelete_Click(object sender, EventArgs e) {
             pbCarImage.Image = null;
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e) {
+            var vf = new VersionForm();
+            vf.ShowDialog();    //モーダルダイアログとして表示
+        }
+
+        //背景変更ボタンイベントハンドラ
+        private void tsmBackColor_Click(object sender, EventArgs e) {
+            var cd = new ColorDialog();
+            cd.Color = this.BackColor;
+
+            if (cd.ShowDialog() == DialogResult.OK)
+            {
+                this.BackColor = cd.Color;
+            }
         }
     }
 }

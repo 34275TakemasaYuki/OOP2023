@@ -13,5 +13,9 @@ namespace CarReportSystem {
         public VersionForm() {
             InitializeComponent();
         }
+
+        private void btOk_Click(object sender, EventArgs e) {
+            this.Close();
+        }
     }
 }
