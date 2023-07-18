@@ -119,12 +119,19 @@ namespace CarReportSystem {
         private void Form1_Load_1(object sender, EventArgs e) {
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
             buttonMask();
-            statasLabelDisp("ここにメッセージが表示されます。");
+            statasLabelDisp("ここにメッセージが表示されます");
+            timeLabelDisp(DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH時mm分ss秒"));
+            tmTimeDisp.Start();
+
         }
 
         //ステータスラベルのテキスト表示・非表示
         private void statasLabelDisp(string msg) {
             tsInfoText.Text = msg;
+        }
+
+        private void timeLabelDisp(string msg) {
+            tssNowTime.Text = msg;
         }
 
         //レコードの選択時
@@ -213,6 +220,10 @@ namespace CarReportSystem {
             {
                 this.BackColor = cd.Color;
             }
+        }
+
+        private void tmTimeDisp_Tick(object sender, EventArgs e) {
+            timeLabelDisp(DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH時mm分ss秒"));
         }
     }
 }
