@@ -51,7 +51,6 @@ namespace CarReportSystem {
                 cbCarName.Items.Add(cr.CarName);
 
             clearDialog();
-            dgvCarReports.CurrentRow.Selected = false;
             buttonMask();
         }
 
@@ -113,6 +112,7 @@ namespace CarReportSystem {
         private void btDeleteReport_Click(object sender, EventArgs e) {
             CarReports.RemoveAt(dgvCarReports.CurrentRow.Index);
             buttonMask();
+            clearDialog();
         }
 
         //システム起動時の処理
@@ -153,6 +153,7 @@ namespace CarReportSystem {
             };
 
             CarReports[dgvCarReports.CurrentRow.Index] = cr;
+            clearDialog();
         }
 
         //編集エリアのクリア
@@ -171,6 +172,7 @@ namespace CarReportSystem {
             cbCarName.Text = "";
             tbReport.Text = "";
             pbCarImage.Image = null;
+            dgvCarReports.CurrentRow.Selected = false;
         }
 
         //マスク処理メソッド
