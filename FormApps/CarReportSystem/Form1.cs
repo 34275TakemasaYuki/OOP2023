@@ -12,10 +12,21 @@ namespace CarReportSystem {
     public partial class Form1 : Form {
         //管理用データ
         BindingList<CarReport> CarReports = new BindingList<CarReport>();
+        private uint mode = 0;
 
         public Form1() {
             InitializeComponent();
             dgvCarReports.DataSource = CarReports;
+        }
+
+        //システム起動時の処理
+        private void Form1_Load_1(object sender, EventArgs e) {
+            dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
+            buttonMask();
+            statasLabelDisp("ここにメッセージが表示されます");
+            timeLabelDisp(DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH時mm分ss秒"));
+            tmTimeDisp.Start();
+
         }
 
         //追加ボタンがクリックされた時のイベントハンドラー
@@ -104,8 +115,10 @@ namespace CarReportSystem {
 
         //画像追加ボタンイベントハンドラ
         private void btImageOpen_Click(object sender, EventArgs e) {
-            ofdImageFileOpen.ShowDialog();
-            pbCarImage.Image = Image.FromFile(ofdImageFileOpen.FileName);
+            if (ofdImageFileOpen.ShowDialog() == DialogResult.OK)
+            {
+                pbCarImage.Image = Image.FromFile(ofdImageFileOpen.FileName);
+            }
         }
 
         //削除ボタンイベントハンドラ
@@ -113,16 +126,6 @@ namespace CarReportSystem {
             CarReports.RemoveAt(dgvCarReports.CurrentRow.Index);
             buttonMask();
             clearDialog();
-        }
-
-        //システム起動時の処理
-        private void Form1_Load_1(object sender, EventArgs e) {
-            dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
-            buttonMask();
-            statasLabelDisp("ここにメッセージが表示されます");
-            timeLabelDisp(DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH時mm分ss秒"));
-            tmTimeDisp.Start();
-
         }
 
         //ステータスラベルのテキスト表示・非表示
@@ -136,12 +139,15 @@ namespace CarReportSystem {
 
         //レコードの選択時
         private void dgvCarReports_Click(object sender, EventArgs e) {
-            dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
-            cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
-            getSelectedMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
-            cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
-            tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
-            pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
+            if (0 < dgvCarReports.RowCount)
+            {
+                dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
+                cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
+                getSelectedMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
+                cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
+                tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
+                pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
+            }
         }
 
         //更新ボタンイベントハンドラ
@@ -222,8 +228,15 @@ namespace CarReportSystem {
             }
         }
 
+        //一秒経過毎に現在時刻表示
         private void tmTimeDisp_Tick(object sender, EventArgs e) {
             timeLabelDisp(DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH時mm分ss秒"));
+        }
+        
+        //画像サイズ変更ボタンイベントハンドラ
+        private void btScaleChange_Click(object sender, EventArgs e) {
+            mode = mode < 4 ? ++mode : 0;
+            pbCarImage.SizeMode = (PictureBoxSizeMode)mode;
         }
     }
 }

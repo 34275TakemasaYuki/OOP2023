@@ -72,6 +72,7 @@ namespace CarReportSystem {
             this.cdColor = new System.Windows.Forms.ColorDialog();
             this.tssNowTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.tmTimeDisp = new System.Windows.Forms.Timer(this.components);
+            this.btScaleChange = new System.Windows.Forms.Button();
             this.gbMaker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarReports)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCarImage)).BeginInit();
@@ -325,7 +326,7 @@ namespace CarReportSystem {
             // btImageOpen
             // 
             this.btImageOpen.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btImageOpen.Location = new System.Drawing.Point(498, 38);
+            this.btImageOpen.Location = new System.Drawing.Point(468, 40);
             this.btImageOpen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btImageOpen.Name = "btImageOpen";
             this.btImageOpen.Size = new System.Drawing.Size(87, 29);
@@ -337,7 +338,7 @@ namespace CarReportSystem {
             // btImageDelete
             // 
             this.btImageDelete.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btImageDelete.Location = new System.Drawing.Point(630, 38);
+            this.btImageDelete.Location = new System.Drawing.Point(561, 41);
             this.btImageDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btImageDelete.Name = "btImageDelete";
             this.btImageDelete.Size = new System.Drawing.Size(87, 29);
@@ -528,11 +529,23 @@ namespace CarReportSystem {
             this.tmTimeDisp.Interval = 1000;
             this.tmTimeDisp.Tick += new System.EventHandler(this.tmTimeDisp_Tick);
             // 
+            // btScaleChange
+            // 
+            this.btScaleChange.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btScaleChange.Location = new System.Drawing.Point(654, 41);
+            this.btScaleChange.Name = "btScaleChange";
+            this.btScaleChange.Size = new System.Drawing.Size(99, 30);
+            this.btScaleChange.TabIndex = 24;
+            this.btScaleChange.Text = "サイズ変更";
+            this.btScaleChange.UseVisualStyleBackColor = true;
+            this.btScaleChange.Click += new System.EventHandler(this.btScaleChange_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(796, 851);
+            this.Controls.Add(this.btScaleChange);
             this.Controls.Add(this.statusDisp);
             this.Controls.Add(this.btDeleteReport);
             this.Controls.Add(this.btModifyReport);
@@ -621,6 +634,7 @@ namespace CarReportSystem {
         private System.Windows.Forms.ToolStripMenuItem tsmBackColor;
         private System.Windows.Forms.ToolStripStatusLabel tssNowTime;
         private System.Windows.Forms.Timer tmTimeDisp;
+        private System.Windows.Forms.Button btScaleChange;
     }
 }
 
