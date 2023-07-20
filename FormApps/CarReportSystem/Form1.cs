@@ -7,12 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
         //管理用データ
         BindingList<CarReport> CarReports = new BindingList<CarReport>();
         private uint mode = 0;
+
+        //設定情報保存用オブジェクト
+        Settings settings = new Settings();
 
         public Form1() {
             InitializeComponent();
@@ -26,6 +31,14 @@ namespace CarReportSystem {
             statasLabelDisp("ここにメッセージが表示されます");
             timeLabelDisp(DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH時mm分ss秒"));
             tmTimeDisp.Start();
+
+            //設定ファイルを逆シリアル化して背景に設定
+           using (var reader = XmlReader.Create("setting.xml"))
+            {
+                var serializer = new XmlSerializer(typeof(Settings));
+                settings = serializer.Deserialize(reader) as Settings;
+                this.BackColor = Color.FromArgb(settings.MainFormColor);
+            }
 
         }
 
@@ -225,6 +238,7 @@ namespace CarReportSystem {
             if (cd.ShowDialog() == DialogResult.OK)
             {
                 this.BackColor = cd.Color;
+                settings.MainFormColor = this.BackColor.ToArgb();
             }
         }
 
@@ -235,8 +249,18 @@ namespace CarReportSystem {
         
         //画像サイズ変更ボタンイベントハンドラ
         private void btScaleChange_Click(object sender, EventArgs e) {
-            mode = mode < 4 ? ++mode : 0;
+            mode = mode < 4 ? ((mode == 1) ?3 : ++mode) : 0;
             pbCarImage.SizeMode = (PictureBoxSizeMode)mode;
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+
+            //設定ファイルのシリアル化
+            using (var writer = XmlWriter.Create("setting.xml"))
+            {
+                var serializer = new XmlSerializer(settings.GetType());
+                serializer.Serialize(writer, settings);
+            }
         }
     }
 }
