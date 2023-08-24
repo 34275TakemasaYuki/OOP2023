@@ -30,6 +30,8 @@ namespace CarReportSystem {
             buttonMask();
             statasLabelDisp("ここにメッセージが表示されます");
             timeLabelDisp(DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH時mm分ss秒"));
+            tssNowTime.BackColor = Color.White;
+            tssNowTime.ForeColor = Color.Black;
             tmTimeDisp.Start();
 
             //設定ファイルを逆シリアル化して背景に設定
