@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -76,14 +78,23 @@ namespace CarReportSystem {
 
             CarReports.Add(cr);
 
-            if (!cbAuthor.Items.Contains(cr.Author))
-                cbAuthor.Items.Add(cr.Author);
-
-            if (!cbCarName.Items.Contains(cr.CarName))
-                cbCarName.Items.Add(cr.CarName);
+            setCbAuthor(cr.Author);
+            setCbCarName(cr.CarName);
 
             clearDialog();
             buttonMask();
+        }
+
+        //投稿者履歴追加メソッド
+        private void setCbAuthor (string author) {
+            if (!cbAuthor.Items.Contains(author))
+                cbAuthor.Items.Add(author);
+        }
+
+        //車名履歴追加メソッド
+        private void setCbCarName(string carname) {
+            if (!cbAuthor.Items.Contains(carname))
+                cbCarName.Items.Add(carname);
         }
 
         //ラジオボタンで選択されているメーカーを返却
@@ -274,14 +285,52 @@ namespace CarReportSystem {
         private void 保存LToolStripMenuItem_Click(object sender, EventArgs e) {
             if(sfdCarRepoSave.ShowDialog() == DialogResult.OK)
             {
-
+                try
+                {
+                    //バイナリ形式でシリアル化
+                    var bf = new BinaryFormatter();
+                    using (FileStream fs = File.Open(sfdCarRepoSave.FileName, FileMode.Create))
+                    {
+                        bf.Serialize(fs, CarReports);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                //cbAuthor.Items.Add(cr.Author);
             }
         }
 
         private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
             if(ofdCarRepoOpen.ShowDialog() == DialogResult.OK)
             {
+                try
+                {
+                    //逆シリアル化でバイナリ形式を取り込む
+                    var bf = new BinaryFormatter();
+                    using (FileStream fs = File.Open(ofdCarRepoOpen.FileName,FileMode.Open,FileAccess.Read))
+                    {
+                        CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
+                        dgvCarReports.DataSource = null;
+                        dgvCarReports.DataSource = CarReports;
 
+                        cbAuthor.Items.Clear();
+                        cbCarName.Items.Clear();
+
+                        foreach (var carReport in CarReports)
+                        {
+                            setCbAuthor(carReport.Author);
+                            setCbCarName(carReport.CarName);
+                        }
+                        dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
+                        clearDialog();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }
