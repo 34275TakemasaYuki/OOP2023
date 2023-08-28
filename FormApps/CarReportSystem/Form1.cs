@@ -35,13 +35,19 @@ namespace CarReportSystem {
             tmTimeDisp.Start();
 
             //設定ファイルを逆シリアル化して背景に設定
-           using (var reader = XmlReader.Create("setting.xml"))
+            try
             {
-                var serializer = new XmlSerializer(typeof(Settings));
-                settings = serializer.Deserialize(reader) as Settings;
-                this.BackColor = Color.FromArgb(settings.MainFormColor);
+                using (var reader = XmlReader.Create("setting.xml"))
+                {
+                    var serializer = new XmlSerializer(typeof(Settings));
+                    settings = serializer.Deserialize(reader) as Settings;
+                    this.BackColor = Color.FromArgb(settings.MainFormColor);
+                }
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         //追加ボタンがクリックされた時のイベントハンドラー
