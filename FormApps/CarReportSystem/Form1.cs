@@ -36,6 +36,9 @@ namespace CarReportSystem {
             tssNowTime.ForeColor = Color.Black;
             tmTimeDisp.Start();
 
+            dgvCarReports.RowsDefaultCellStyle.BackColor = Color.AliceBlue; //全体に色を設定
+            dgvCarReports.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray; //奇数行の色を上書き設定
+
             //設定ファイルを逆シリアル化して背景に設定
             try
             {
@@ -171,7 +174,7 @@ namespace CarReportSystem {
 
         //レコードの選択時
         private void dgvCarReports_Click(object sender, EventArgs e) {
-            if (0 < dgvCarReports.RowCount)
+            if (0 < dgvCarReports.RowCount && dgvCarReports.CurrentRow.Selected)
             {
                 dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
                 cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
@@ -323,6 +326,7 @@ namespace CarReportSystem {
                             setCbAuthor(carReport.Author);
                             setCbCarName(carReport.CarName);
                         }
+
                         dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
                         clearDialog();
                     }
