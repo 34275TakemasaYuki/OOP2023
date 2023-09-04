@@ -23,7 +23,7 @@ namespace CarReportSystem {
 
         public Form1() {
             InitializeComponent();
-            dgvCarReports.DataSource = CarReports;
+            //dgvCarReports.DataSource = CarReports;
         }
 
         //システム起動時の処理
@@ -185,6 +185,8 @@ namespace CarReportSystem {
             }
         }
 
+
+
         //更新ボタンイベントハンドラ
         private void btModifyReport_Click(object sender, EventArgs e) {
             if (dgvCarReports.Rows.Count == 0)
@@ -336,6 +338,19 @@ namespace CarReportSystem {
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void carReportTableBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
+            this.Validate();
+            this.carReportTableBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202327DataSet);
+
+        }
+
+        //接続ボタンイベントハンドラ
+        private void btConnection_Click(object sender, EventArgs e) {
+            // TODO: このコード行はデータを 'infosys202327DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            this.carReportTableTableAdapter.Fill(this.infosys202327DataSet.CarReportTable);
         }
     }
 }
