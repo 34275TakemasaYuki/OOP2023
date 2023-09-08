@@ -34,17 +34,17 @@ namespace Exercise01 {
             var emp = new Employee
             {
                 Id = 00001,
-                Name = "商品",
-                HireDate = DateTime.Now
+                Name = "竹政 優希",
+                HireDate = new DateTime(2023,09,05),
             };
 
-            using (var writer = XmlWriter.Create("employee.xml"))
+            using (var writer = XmlWriter.Create(v))
             {
                 var serializer = new XmlSerializer(emp.GetType());
                 serializer.Serialize(writer, emp);
             }
 
-            using (var reader = XmlReader.Create("employee.xml"))
+            using (var reader = XmlReader.Create(v))
             {
                 var serializer = new XmlSerializer(typeof(Employee));
                 var readEmp = serializer.Deserialize(reader) as Employee;
@@ -54,6 +54,51 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(string v) {
+            var emps = new Employee[]
+            {
+                new Employee
+                {
+                    Id = 00002,
+                    Name = "竹政いずみ",
+                    HireDate = new DateTime(2020,02,28),
+                },
+
+                new Employee
+                {
+                    Id = 00003,
+                    Name = "竹政 正",
+                    HireDate = new DateTime(2022,04,05),
+                },
+            };
+
+            var settings = new XmlWriterSettings
+            {
+                Encoding = new System.Text.UTF8Encoding(false),
+                Indent = true,
+                IndentChars = " ",
+            };
+
+            using (var writer = XmlWriter.Create(v, settings))
+            {
+                var serializer = new DataContractSerializer(emps.GetType());
+                serializer.WriteObject(writer, emps);
+            }
+        }
+
+        private static void Exercise1_3(string v) {
+            using (var reader = XmlReader.Create(v))
+            {
+                var serializer = new DataContractSerializer(typeof(Employee[]));
+                var readEmp = serializer.ReadObject(reader) as Employee[];
+                foreach (var emp in readEmp)
+                {
+                    Console.WriteLine(emp);
+                }
+            }
+
+        }
+
+        private static void Exercise1_4(string v) {
             var emps = new Employee[]
             {
                 new Employee
@@ -71,48 +116,23 @@ namespace Exercise01 {
                 },
             };
 
-            using (var writer = XmlWriter.Create("employees.xml"))
-            {
-                var serializer = new DataContractSerializer(emps.GetType());
-                serializer.WriteObject(writer, emps);
-            }
-        }
-
-        private static void Exercise1_3(string v) {
-            using (var reader = XmlReader.Create("employees.xml"))
-            {
-                var serializer = new DataContractSerializer(typeof(Employee[]));
-                var readEmp = serializer.ReadObject(reader) as Employee[];
-                foreach (var emp in readEmp)
-                {
-                    Console.WriteLine(emp);
-                }
-            }
-
-        }
-
-        private static void Exercise1_4(string v) {
-            var emps = new Employee[]
-            {
-                new Employee
-                {
-                    //Id = 00002,
-                    Name = "商品2",
-                    HireDate = DateTime.Now
-                },
-
-                new Employee
-                {
-                    //Id = 00003,
-                    Name = "商品3",
-                    HireDate = DateTime.Now
-                },
-            };
-
-            using (var stream = new FileStream("employees.json", FileMode.Create, FileAccess.Write))
+            using (var stream = new FileStream(v, FileMode.Create, FileAccess.Write))
             {
                 var serializer = new DataContractJsonSerializer(emps.GetType());
+                serializer.WriteObject(stream, emps);
             }
         }
     }
+
+    [DataContract]
+    public class Employee2 {
+        public int Id { get; set; }
+
+        [DataMember(Name = "name")]
+        public string Name { get; set; }
+
+        [DataMember(Name ="hireDate")]
+        public DateTime HireDate { get; set; }
+    }
+    
 }
