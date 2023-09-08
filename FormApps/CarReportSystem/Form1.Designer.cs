@@ -533,7 +533,6 @@ namespace CarReportSystem {
             this.開くOToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.開くOToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.開くOToolStripMenuItem.Text = "開く(&O)...";
-            this.開くOToolStripMenuItem.Click += new System.EventHandler(this.開くOToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -546,7 +545,6 @@ namespace CarReportSystem {
             this.保存LToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.保存LToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.保存LToolStripMenuItem.Text = "保存(&S)...";
-            this.保存LToolStripMenuItem.Click += new System.EventHandler(this.保存LToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 

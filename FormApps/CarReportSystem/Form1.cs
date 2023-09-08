@@ -15,11 +15,10 @@ using System.Xml.Serialization;
 namespace CarReportSystem {
     public partial class Form1 : Form {
         //管理用データ
-        BindingList<CarReport> CarReports = new BindingList<CarReport>();
+       // BindingList<CarReport> CarReports = new BindingList<CarReport>();
         private uint mode = 0;
 
         //設定情報保存用オブジェクト
-        //Settings settings = get
         Settings settings = Settings.getInstance();
 
         public Form1() {
@@ -159,7 +158,9 @@ namespace CarReportSystem {
 
         //削除ボタンイベントハンドラ
         private void btDeleteReport_Click(object sender, EventArgs e) {
-            CarReports.RemoveAt(dgvCarReports.CurrentRow.Index);
+            dgvCarReports.Rows.RemoveAt(dgvCarReports.CurrentRow.Index);
+
+            this.Validate();
             buttonMask();
             clearDialog();
         }
@@ -234,7 +235,8 @@ namespace CarReportSystem {
             cbCarName.Text = "";
             tbReport.Text = "";
             pbCarImage.Image = null;
-            dgvCarReports.CurrentRow.Selected = false;
+            if(dgvCarReports.Rows.Equals(true))
+                dgvCarReports.CurrentRow.Selected = false;
         }
 
         //マスク処理メソッド
@@ -299,7 +301,7 @@ namespace CarReportSystem {
             }
         }
 
-        private void 保存LToolStripMenuItem_Click(object sender, EventArgs e) {
+        /*private void 保存LToolStripMenuItem_Click(object sender, EventArgs e) {
             if(sfdCarRepoSave.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -350,7 +352,7 @@ namespace CarReportSystem {
                     MessageBox.Show(ex.Message);
                 }
             }
-        }
+        }*/
 
         private void carReportTableBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
             this.Validate();
