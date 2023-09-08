@@ -29,7 +29,7 @@ namespace CarReportSystem {
 
         //システム起動時の処理
         private void Form1_Load_1(object sender, EventArgs e) {
-            //dgvCarReports.Columns[6].Visible = false;   //画像項目非表示
+            dgvCarReports.Columns[6].Visible = false;   //画像項目非表示
             buttonMask();
             statasLabelDisp("ここにメッセージが表示されます");
             timeLabelDisp(DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH時mm分ss秒"));
@@ -70,20 +70,20 @@ namespace CarReportSystem {
                 return;
             }
 
-            var cr = new CarReport
-            {
-                Date = dtpDate.Value,
-                Author = cbAuthor.Text,
-                Maker = getSelectedMaker(),
-                CarName = cbCarName.Text,
-                Report = tbReport.Text,
-                CarImage = pbCarImage.Image,
-            };
+            DataRow newRow = infosys202327DataSet.CarReportTable.NewRow();
 
-            CarReports.Add(cr);
+            newRow[1] = dtpDate.Value;
+            newRow[2] = cbAuthor.Text;
+            newRow[3] = getSelectedMaker();
+            newRow[4] = cbCarName.Text;
+            newRow[5] = tbReport.Text;
+            newRow[6] = ImageToByteArray(pbCarImage.Image);
 
-            setCbAuthor(cr.Author);
-            setCbCarName(cr.CarName);
+            infosys202327DataSet.CarReportTable.Rows.Add(newRow);
+            this.carReportTableTableAdapter.Update(infosys202327DataSet.CarReportTable);
+
+            setCbAuthor(cbAuthor.Text);
+            setCbCarName(cbCarName.Text);
 
             clearDialog();
             buttonMask();
