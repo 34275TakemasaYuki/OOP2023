@@ -186,7 +186,9 @@ namespace CarReportSystem {
 
                 if (!dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value))
                 {
-                    pbCarImage.Image = ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value);
+                    pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)
+                        && ((Byte[])dgvCarReports.CurrentRow.Cells[6].Value).Length != 0 ?
+                        ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value) : null;
                 }
                 else
                 {
@@ -379,6 +381,13 @@ namespace CarReportSystem {
         private void btConnection_Click(object sender, EventArgs e) {
             // TODO: このコード行はデータを 'infosys202327DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202327DataSet.CarReportTable);
+
+            foreach (var carReport in infosys202327DataSet.CarReportTable)
+            {
+                setCbAuthor(carReport.Author);
+                setCbCarName(carReport.CarName);
+            }
+
             buttonMask();
             clearDialog();
         }
