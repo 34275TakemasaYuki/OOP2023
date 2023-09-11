@@ -339,5 +339,21 @@ namespace CarReportSystem {
             buttonMask();
             clearDialog();
         }
+
+        private void btAuthorSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByAuthor(this.infosys202327DataSet.CarReportTable, tbAuthorSearch.Text);
+        }
+
+        private void btCarNameSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByCarName(this.infosys202327DataSet.CarReportTable, tbCarNameSearch.Text);
+        }
+
+        private void btDateSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByDate(this.infosys202327DataSet.CarReportTable, dateTimePickerSearch.Value.ToString());
+        }
+
+        private void btReset_Click(object sender, EventArgs e) {
+            
+        }
     }
 }
