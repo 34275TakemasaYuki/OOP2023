@@ -323,16 +323,11 @@ namespace CarReportSystem {
             return b;
         }
 
-        //接続ボタンイベントハンドラ
-        private void btConnection_Click(object sender, EventArgs e) {
-            connect();
-        }
-
         private void 接続OToolStripMenuItem_Click(object sender, EventArgs e) {
-            connect();
+            dbConnect();
         }
 
-        private void connect() {
+        private void dbConnect() {
             this.carReportTableTableAdapter.Fill(this.infosys202327DataSet.CarReportTable);
 
             foreach (var carReport in infosys202327DataSet.CarReportTable)
