@@ -15,7 +15,6 @@ using System.Xml.Serialization;
 namespace CarReportSystem {
     public partial class Form1 : Form {
         //管理用データ
-       // BindingList<CarReport> CarReports = new BindingList<CarReport>();
         private uint mode = 0;
 
         //設定情報保存用オブジェクト
@@ -23,7 +22,7 @@ namespace CarReportSystem {
 
         public Form1() {
             InitializeComponent();
-            //dgvCarReports.DataSource = CarReports;
+
         }
 
         //システム起動時の処理
@@ -303,59 +302,6 @@ namespace CarReportSystem {
             }
         }
 
-        /*private void 保存LToolStripMenuItem_Click(object sender, EventArgs e) {
-            if(sfdCarRepoSave.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    //バイナリ形式でシリアル化
-                    var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(sfdCarRepoSave.FileName, FileMode.Create))
-                    {
-                        bf.Serialize(fs, CarReports);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                //cbAuthor.Items.Add(cr.Author);
-            }
-        }
-
-        private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
-            if(ofdCarRepoOpen.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    //逆シリアル化でバイナリ形式を取り込む
-                    var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(ofdCarRepoOpen.FileName,FileMode.Open,FileAccess.Read))
-                    {
-                        CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
-                        dgvCarReports.DataSource = null;
-                        dgvCarReports.DataSource = CarReports;
-
-                        cbAuthor.Items.Clear();
-                        cbCarName.Items.Clear();
-
-                        foreach (var carReport in CarReports)
-                        {
-                            setCbAuthor(carReport.Author);
-                            setCbCarName(carReport.CarName);
-                        }
-
-                        dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
-                        clearDialog();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }*/
-
         private void carReportTableBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
             this.Validate();
             this.carReportTableBindingSource.EndEdit();
@@ -379,7 +325,14 @@ namespace CarReportSystem {
 
         //接続ボタンイベントハンドラ
         private void btConnection_Click(object sender, EventArgs e) {
-            // TODO: このコード行はデータを 'infosys202327DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            connect();
+        }
+
+        private void 接続OToolStripMenuItem_Click(object sender, EventArgs e) {
+            connect();
+        }
+
+        private void connect() {
             this.carReportTableTableAdapter.Fill(this.infosys202327DataSet.CarReportTable);
 
             foreach (var carReport in infosys202327DataSet.CarReportTable)
