@@ -32,6 +32,7 @@ namespace CarReportSystem {
             buttonMask();
             statasLabelDisp("ここにメッセージが表示されます");
             timeLabelDisp(DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH時mm分ss秒"));
+
             tssNowTime.BackColor = Color.White;
             tssNowTime.ForeColor = Color.Black;
             tmTimeDisp.Start();
@@ -185,6 +186,12 @@ namespace CarReportSystem {
             }
         }
 
+                buttonMask();
+            }
+        }
+
+
+
         //更新ボタンイベントハンドラ
         private void btModifyReport_Click(object sender, EventArgs e) {
             if (dgvCarReports.Rows.Count == 0)
@@ -327,15 +334,25 @@ namespace CarReportSystem {
                             setCbCarName(carReport.CarName);
                         }
 
-                        dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
-                        clearDialog();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            buttonMask();
+            clearDialog();
+        }
+
+        private void btAuthorSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByAuthor(this.infosys202327DataSet.CarReportTable, tbAuthorSearch.Text);
+        }
+
+        private void btCarNameSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByCarName(this.infosys202327DataSet.CarReportTable, tbCarNameSearch.Text);
+        }
+
+        private void btDateSearch_Click(object sender, EventArgs e) {
+            //carReportTableTableAdapter.FillByDate(this.infosys202327DataSet.CarReportTable, dateTimePickerSearch.Value.ToString());
+            carReportTableTableAdapter.FillByDateToDate(this.infosys202327DataSet.CarReportTable, dtpSearch_s.Text, dtpSearch_e.Text);
+        }
+
+        private void btReset_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.Fill(this.infosys202327DataSet.CarReportTable);
         }
     }
 }
