@@ -28,6 +28,8 @@ namespace CarReportSystem {
         //システム起動時の処理
         private void Form1_Load_1(object sender, EventArgs e) {
             dgvCarReports.Columns[6].Visible = false;   //画像項目非表示
+            dgvCarReports.Columns[0].Visible = false;   //ID非表示
+
             buttonMask();
             statasLabelDisp("ここにメッセージが表示されます");
             timeLabelDisp(DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH時mm分ss秒"));
@@ -349,11 +351,12 @@ namespace CarReportSystem {
         }
 
         private void btDateSearch_Click(object sender, EventArgs e) {
-            carReportTableTableAdapter.FillByDate(this.infosys202327DataSet.CarReportTable, dateTimePickerSearch.Value.ToString());
+            //carReportTableTableAdapter.FillByDate(this.infosys202327DataSet.CarReportTable, dateTimePickerSearch.Value.ToString());
+            carReportTableTableAdapter.FillByDateToDate(this.infosys202327DataSet.CarReportTable, dtpSearch_s.Text, dtpSearch_e.Text);
         }
 
         private void btReset_Click(object sender, EventArgs e) {
-            
+            carReportTableTableAdapter.Fill(this.infosys202327DataSet.CarReportTable);
         }
     }
 }
