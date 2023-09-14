@@ -124,9 +124,7 @@ namespace SampleEntityFramework {
         private static void Exercise1_3() {
             using (var db = new BooksDbContext())
             {
-                var maxBook = db.Books
-                              .Max(a => a.Title.Length);
-                var books = db.Books.Where(b => b.Title.Length == maxBook);
+                var books = db.Books.Where(a => a.Title.Length == db.Books.Max(b => b.Title.Length));
                 foreach (var book in books)
                 {
                     Console.WriteLine($"{book.Title}");
@@ -135,7 +133,18 @@ namespace SampleEntityFramework {
         }
 
         private static void Exercise1_4() {
-            
+            var cnt = 1;
+            using (var db = new BooksDbContext())
+            {
+                var books = db.Books.OrderBy(a => a.PublishedYear);
+                foreach (var book in books.ToList())
+                {
+                    Console.WriteLine($"{book.Title} {book.Author.Name}");
+                    cnt++;
+                    if (cnt > 3)
+                        break;
+                }
+            }
         }
 
         private static void Exercise1_5() {

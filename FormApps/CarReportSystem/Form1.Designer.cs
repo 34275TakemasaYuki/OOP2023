@@ -348,7 +348,7 @@ namespace CarReportSystem {
             this.btImageDelete.TabIndex = 7;
             this.btImageDelete.Text = "削除";
             this.btImageDelete.UseVisualStyleBackColor = true;
-            this.btImageDelete.Click += new System.EventHandler(this.btImageDelete_Click);
+            //this.btImageDelete.Click += new System.EventHandler(this.btImageDelete_Click);
             // 
             // pbCarImage
             // 
@@ -388,7 +388,7 @@ namespace CarReportSystem {
             this.btModifyReport.TabIndex = 10;
             this.btModifyReport.Text = "修正";
             this.btModifyReport.UseVisualStyleBackColor = false;
-            this.btModifyReport.Click += new System.EventHandler(this.btModifyReport_Click);
+           // this.btModifyReport.Click += new System.EventHandler(this.btModifyReport_Click);
             // 
             // btDeleteReport
             // 
@@ -435,7 +435,7 @@ namespace CarReportSystem {
             this.開くOToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.開くOToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.開くOToolStripMenuItem.Text = "開く(&O)...";
-            this.開くOToolStripMenuItem.Click += new System.EventHandler(this.開くOToolStripMenuItem_Click);
+            //this.開くOToolStripMenuItem.Click += new System.EventHandler(this.開くOToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -448,7 +448,7 @@ namespace CarReportSystem {
             this.保存LToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.保存LToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.保存LToolStripMenuItem.Text = "保存(&S)...";
-            this.保存LToolStripMenuItem.Click += new System.EventHandler(this.保存LToolStripMenuItem_Click);
+           // this.保存LToolStripMenuItem.Click += new System.EventHandler(this.保存LToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -461,7 +461,7 @@ namespace CarReportSystem {
             this.終了XToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
             this.終了XToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.終了XToolStripMenuItem.Text = "終了(&X)";
-            this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了XToolStripMenuItem_Click);
+           // this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了XToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -484,7 +484,7 @@ namespace CarReportSystem {
             this.tsmBackColor.Name = "tsmBackColor";
             this.tsmBackColor.Size = new System.Drawing.Size(98, 22);
             this.tsmBackColor.Text = "背景";
-            this.tsmBackColor.Click += new System.EventHandler(this.tsmBackColor_Click);
+           // this.tsmBackColor.Click += new System.EventHandler(this.tsmBackColor_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -499,7 +499,7 @@ namespace CarReportSystem {
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(142, 22);
             this.toolStripMenuItem4.Text = "バージョン情報";
-            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+           // this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // ofdImageFileOpen
             // 
@@ -532,7 +532,7 @@ namespace CarReportSystem {
             // tmTimeDisp
             // 
             this.tmTimeDisp.Interval = 1000;
-            this.tmTimeDisp.Tick += new System.EventHandler(this.tmTimeDisp_Tick);
+           // this.tmTimeDisp.Tick += new System.EventHandler(this.tmTimeDisp_Tick);
             // 
             // btScaleChange
             // 
@@ -543,7 +543,7 @@ namespace CarReportSystem {
             this.btScaleChange.TabIndex = 8;
             this.btScaleChange.Text = "サイズ変更";
             this.btScaleChange.UseVisualStyleBackColor = true;
-            this.btScaleChange.Click += new System.EventHandler(this.btScaleChange_Click);
+           // this.btScaleChange.Click += new System.EventHandler(this.btScaleChange_Click);
             // 
             // ofdCarRepoOpen
             // 
@@ -583,7 +583,7 @@ namespace CarReportSystem {
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "カーレポート管理システム";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+           // this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load_1);
             this.gbMaker.ResumeLayout(false);
             this.gbMaker.PerformLayout();
