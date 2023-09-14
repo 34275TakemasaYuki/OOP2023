@@ -22,7 +22,7 @@ namespace SampleEntityFramework {
              }*/
 
             Console.WriteLine("# 1.1");
-            Exercise1_1();
+            //Exercise1_1();
 
             Console.WriteLine();
             Console.WriteLine("# 1.2");
@@ -53,7 +53,7 @@ namespace SampleEntityFramework {
             Console.WriteLine();
         }
 
-        private static void Exercise1_1() {
+        /*private static void Exercise1_1() {
             using (var db = new BooksDbContext())
             {
                 var author1 = new Author
@@ -109,10 +109,13 @@ namespace SampleEntityFramework {
                 db.Books.Add(book4);
                 db.SaveChanges();
             }
-        }
+        }*/
 
         private static void Exercise1_2() {
-           
+            foreach (var book in GetBooks())
+              {
+                  Console.WriteLine($"{book.Title} {book.Author.Name}");
+              }
         }
 
         private static void Exercise1_3() {
@@ -241,10 +244,22 @@ namespace SampleEntityFramework {
         private static void DeleteBook() {
             using (var db = new BooksDbContext())
             {
-                var book = db.Books.SingleOrDefault(x => x.Id == 10);
+                var book = db.Books.SingleOrDefault(x => x.Id == 11);
                 if (book != null)
                 {
                     db.Books.Remove(book);
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        private static void DeleteAuthor(int num) {
+            using (var db = new BooksDbContext())
+            {
+                var author = db.Authors.SingleOrDefault(x => x.Id == num);
+                if (author != null)
+                {
+                    db.Authors.Remove(author);
                     db.SaveChanges();
                 }
             }
