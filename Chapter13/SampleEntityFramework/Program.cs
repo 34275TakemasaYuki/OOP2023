@@ -112,14 +112,26 @@ namespace SampleEntityFramework {
         }*/
 
         private static void Exercise1_2() {
-            foreach (var book in GetBooks())
-              {
-                  Console.WriteLine($"{book.Title} {book.Author.Name}");
-              }
+            using (var db = new BooksDbContext())
+            {
+                foreach (var book in db.Books.ToList())
+                {
+                    Console.WriteLine($"{book.Title} {book.PublishedYear} {book.Author.Name}");
+                }
+            }
         }
 
         private static void Exercise1_3() {
-           
+            using (var db = new BooksDbContext())
+            {
+                var maxBook = db.Books
+                              .Max(a => a.Title.Length);
+                var books = db.Books.Where(b => b.Title.Length == maxBook);
+                foreach (var book in books)
+                {
+                    Console.WriteLine($"{book.Title}");
+                }
+            }
         }
 
         private static void Exercise1_4() {
