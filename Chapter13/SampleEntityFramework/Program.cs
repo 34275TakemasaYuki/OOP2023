@@ -133,16 +133,12 @@ namespace SampleEntityFramework {
         }
 
         private static void Exercise1_4() {
-            var cnt = 1;
             using (var db = new BooksDbContext())
             {
-                var books = db.Books.OrderBy(a => a.PublishedYear);
-                foreach (var book in books.ToList())
+                var books = db.Books.OrderBy(a => a.PublishedYear).Take(3);
+                foreach (var book in books.ToArray())
                 {
                     Console.WriteLine($"{book.Title} {book.Author.Name}");
-                    cnt++;
-                    if (cnt > 3)
-                        break;
                 }
             }
         }
@@ -151,10 +147,10 @@ namespace SampleEntityFramework {
             using (var db = new BooksDbContext())
             {
                 var authors = db.Authors.OrderByDescending(a => a.Birthday);
-                foreach (var author in authors)
+                foreach (var author in authors.ToArray())
                 {
-                    Console.WriteLine($"{author.Name}");
-                    foreach (var book in )
+                    Console.WriteLine($"{author.Name} {author.Birthday}");
+                    foreach (var book in author.Books.ToArray())
                     {
                         Console.WriteLine($"{book.Title} {book.PublishedYear}");
                     }
