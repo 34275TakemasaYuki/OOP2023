@@ -67,5 +67,20 @@ namespace RssReader {
                 tbInfo.Text = "選択する項目がありません";
             }
         }
+
+        //ラジオボタンで選択されているメーカーを返却
+        private ItemData.GenreGroup getSelectedGenre() {
+
+            foreach (var item in gbGenre.Controls)
+            {
+                if (((RadioButton)item).Checked)
+                {
+                    return (ItemData.GenreGroup)int.Parse(((RadioButton)item).Tag.ToString());
+                }
+            }
+
+            return ItemData.GenreGroup.IT;
+
+        }
     }
 }
