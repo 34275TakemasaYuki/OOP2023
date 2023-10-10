@@ -17,7 +17,7 @@ namespace Exercise05 {
             var sb = new StringBuilder();
             foreach (var line in lines)
             {
-                var s = Regex.Replace(line,@"<(/?)([A-Z][A-Z0-9]*)(.*)",
+                var s = Regex.Replace(line,@"<(/?)([A-Z][A-Z0-9]*)(.*)>",
                     m =>
                     {
                         return string.Format("<{0} {1} {2}>", m.Groups[1].Value, m.Groups[2].Value.ToLower(), m.Groups[3].Value);
