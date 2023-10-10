@@ -14,6 +14,7 @@ namespace Exercise06 {
             var matches = Regex.Matches(text, pattern);
             foreach (Match m in matches)
                 Console.WriteLine("'{0}'", m.Value);
+            //コメント
         }
     }
 }
