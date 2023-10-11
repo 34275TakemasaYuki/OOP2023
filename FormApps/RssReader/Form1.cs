@@ -68,19 +68,20 @@ namespace RssReader {
             }
         }
 
-        //ラジオボタンで選択されているメーカーを返却
-        private ItemData.GenreGroup getSelectedGenre() {
+        private void rbIT_CheckedChanged(object sender, EventArgs e) {
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/topics/it.xml";
+        }
 
-            foreach (var item in gbGenre.Controls)
-            {
-                if (((RadioButton)item).Checked)
-                {
-                    return (ItemData.GenreGroup)int.Parse(((RadioButton)item).Tag.ToString());
-                }
-            }
+        private void rbEntertainment_CheckedChanged(object sender, EventArgs e) {
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/topics/entertainment.xml";
+        }
 
-            return ItemData.GenreGroup.IT;
+        private void rbBusiness_CheckedChanged(object sender, EventArgs e) {
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/topics/business.xml";
+        }
 
+        private void rbDomestic_CheckedChanged(object sender, EventArgs e) {
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/categories/domestic.xml";
         }
     }
 }
