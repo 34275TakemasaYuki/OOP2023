@@ -71,14 +71,18 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_6() {
-            var groups = Library.Categories.GroupJoin(Library.Books, c => c.Id, b => b.CategoryId,
-                                           (c, books) => new { Category = c.Name, Books = books }).OrderBy(b => b.Category);
+            var groups = Library.Books.Join(Library.Categories, book => book.CategoryId,
+                                               category => category.Id, (book, category) => new {
+                                                   Title = book.Title,
+                                                   Category = category.Name
+                                               }).GroupBy(b => b.Category).OrderBy(o => o.Key);
+
             foreach (var group in groups)
             {
-                Console.WriteLine("#{0}", group.Category);
-                foreach (var book in group.Books)
+                Console.WriteLine("#{0}", group.Key);
+                foreach (var book in group)
                 {
-                    Console.WriteLine(" {0}",book.Title);
+                    Console.WriteLine(" {0}", book.Title);
                 }
             }
         }
