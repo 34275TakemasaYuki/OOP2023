@@ -32,16 +32,16 @@ namespace RssReader {
             this.rbIT = new System.Windows.Forms.RadioButton();
             this.rbEntertainment = new System.Windows.Forms.RadioButton();
             this.gbGenre = new System.Windows.Forms.GroupBox();
-            this.rbBusiness = new System.Windows.Forms.RadioButton();
             this.rbDomestic = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
+            this.rbBusiness = new System.Windows.Forms.RadioButton();
+            this.btRegister = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbRegisterName = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
             this.labelURL = new System.Windows.Forms.Label();
-            this.tbRecommendationURL = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tbRegisterURL = new System.Windows.Forms.TextBox();
+            this.cbRegisterView = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.labelGuide = new System.Windows.Forms.Label();
             this.gbGenre.SuspendLayout();
@@ -130,19 +130,6 @@ namespace RssReader {
             this.gbGenre.TabIndex = 5;
             this.gbGenre.TabStop = false;
             // 
-            // rbBusiness
-            // 
-            this.rbBusiness.AutoSize = true;
-            this.rbBusiness.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.rbBusiness.Location = new System.Drawing.Point(161, 18);
-            this.rbBusiness.Name = "rbBusiness";
-            this.rbBusiness.Size = new System.Drawing.Size(76, 28);
-            this.rbBusiness.TabIndex = 2;
-            this.rbBusiness.TabStop = true;
-            this.rbBusiness.Text = "経済";
-            this.rbBusiness.UseVisualStyleBackColor = true;
-            this.rbBusiness.CheckedChanged += new System.EventHandler(this.rbBusiness_CheckedChanged);
-            // 
             // rbDomestic
             // 
             this.rbDomestic.AutoSize = true;
@@ -156,15 +143,28 @@ namespace RssReader {
             this.rbDomestic.UseVisualStyleBackColor = true;
             this.rbDomestic.CheckedChanged += new System.EventHandler(this.rbDomestic_CheckedChanged);
             // 
-            // button1
+            // rbBusiness
             // 
-            this.button1.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(329, 213);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(51, 52);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "登録";
-            this.button1.UseVisualStyleBackColor = true;
+            this.rbBusiness.AutoSize = true;
+            this.rbBusiness.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.rbBusiness.Location = new System.Drawing.Point(161, 18);
+            this.rbBusiness.Name = "rbBusiness";
+            this.rbBusiness.Size = new System.Drawing.Size(76, 28);
+            this.rbBusiness.TabIndex = 2;
+            this.rbBusiness.TabStop = true;
+            this.rbBusiness.Text = "経済";
+            this.rbBusiness.UseVisualStyleBackColor = true;
+            this.rbBusiness.CheckedChanged += new System.EventHandler(this.rbBusiness_CheckedChanged);
+            // 
+            // btRegister
+            // 
+            this.btRegister.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btRegister.Location = new System.Drawing.Point(329, 213);
+            this.btRegister.Name = "btRegister";
+            this.btRegister.Size = new System.Drawing.Size(51, 52);
+            this.btRegister.TabIndex = 6;
+            this.btRegister.Text = "登録";
+            this.btRegister.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -186,13 +186,13 @@ namespace RssReader {
             this.label2.TabIndex = 8;
             this.label2.Text = "お気に入り登録";
             // 
-            // textBox1
+            // tbRegisterName
             // 
-            this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBox1.Location = new System.Drawing.Point(92, 206);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(231, 31);
-            this.textBox1.TabIndex = 9;
+            this.tbRegisterName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbRegisterName.Location = new System.Drawing.Point(92, 206);
+            this.tbRegisterName.Name = "tbRegisterName";
+            this.tbRegisterName.Size = new System.Drawing.Size(231, 31);
+            this.tbRegisterName.TabIndex = 9;
             // 
             // labelName
             // 
@@ -214,22 +214,22 @@ namespace RssReader {
             this.labelURL.TabIndex = 11;
             this.labelURL.Text = "URL";
             // 
-            // tbRecommendationURL
+            // tbRegisterURL
             // 
-            this.tbRecommendationURL.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbRecommendationURL.Location = new System.Drawing.Point(92, 244);
-            this.tbRecommendationURL.Name = "tbRecommendationURL";
-            this.tbRecommendationURL.Size = new System.Drawing.Size(231, 31);
-            this.tbRecommendationURL.TabIndex = 12;
+            this.tbRegisterURL.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbRegisterURL.Location = new System.Drawing.Point(92, 244);
+            this.tbRegisterURL.Name = "tbRegisterURL";
+            this.tbRegisterURL.Size = new System.Drawing.Size(231, 31);
+            this.tbRegisterURL.TabIndex = 12;
             // 
-            // comboBox1
+            // cbRegisterView
             // 
-            this.comboBox1.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(236, 291);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(144, 24);
-            this.comboBox1.TabIndex = 13;
+            this.cbRegisterView.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.cbRegisterView.FormattingEnabled = true;
+            this.cbRegisterView.Location = new System.Drawing.Point(236, 291);
+            this.cbRegisterView.Name = "cbRegisterView";
+            this.cbRegisterView.Size = new System.Drawing.Size(144, 24);
+            this.cbRegisterView.TabIndex = 13;
             // 
             // label3
             // 
@@ -258,14 +258,14 @@ namespace RssReader {
             this.ClientSize = new System.Drawing.Size(1272, 691);
             this.Controls.Add(this.labelGuide);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.tbRecommendationURL);
+            this.Controls.Add(this.cbRegisterView);
+            this.Controls.Add(this.tbRegisterURL);
             this.Controls.Add(this.labelURL);
             this.Controls.Add(this.labelName);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbRegisterName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btRegister);
             this.Controls.Add(this.gbGenre);
             this.Controls.Add(this.tbInfo);
             this.Controls.Add(this.wbBrowser);
@@ -294,14 +294,14 @@ namespace RssReader {
         private System.Windows.Forms.GroupBox gbGenre;
         private System.Windows.Forms.RadioButton rbDomestic;
         private System.Windows.Forms.RadioButton rbBusiness;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btRegister;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbRegisterName;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Label labelURL;
-        private System.Windows.Forms.TextBox tbRecommendationURL;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox tbRegisterURL;
+        private System.Windows.Forms.ComboBox cbRegisterView;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelGuide;
     }
