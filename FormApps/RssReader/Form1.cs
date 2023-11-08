@@ -16,6 +16,22 @@ namespace RssReader {
             InitializeComponent();
         }
 
+        Dictionary<string, string> favoriteDict = new Dictionary<string, string>();
+
+        class favoriteSet {
+            public string Key { get; set; }
+            public string Value { get; set; }
+
+            public favoriteSet(string Key, string Value) {
+                this.Key = Key;
+                this.Value = Value;
+            }
+
+            public override string ToString() {
+                return Value;
+            }
+        }
+
         List<ItemData> ItemDatas = new List<ItemData>();
         private void btGet_Click(object sender, EventArgs e) {
             if (tbUrl.TextLength != 0)
@@ -82,6 +98,28 @@ namespace RssReader {
 
         private void rbDomestic_CheckedChanged(object sender, EventArgs e) {
             tbUrl.Text = "https://news.yahoo.co.jp/rss/categories/domestic.xml";
+        }
+
+        private void btRegister_Click(object sender, EventArgs e) {
+
+            favoriteSet favorite = new favoriteSet(tbRegisterURL.Text, tbRegisterName.Text);
+            if (favoriteDict.ContainsKey(tbRegisterURL.Text) || favoriteDict.ContainsValue(tbRegisterName.Text))
+            {
+                tbInfo.Text = "名前かURLが登録データと重複しています";
+            }
+            else
+            {
+                cbRegisterView.Items.Add(favorite);
+                favoriteDict.Add(tbRegisterURL.Text, tbRegisterName.Text);
+                tbInfo.Text = "お気に入りデータが登録されました";
+            }
+        }
+
+        private void cbRegisterView_SelectedIndexChanged(object sender, EventArgs e) {
+            favoriteSet favorite = (favoriteSet)cbRegisterView.SelectedItem;
+            tbUrl.Text = favorite.Key.ToString();
+
+            
         }
     }
 }

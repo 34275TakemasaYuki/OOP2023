@@ -165,6 +165,7 @@ namespace RssReader {
             this.btRegister.TabIndex = 6;
             this.btRegister.Text = "登録";
             this.btRegister.UseVisualStyleBackColor = true;
+            this.btRegister.Click += new System.EventHandler(this.btRegister_Click);
             // 
             // label1
             // 
@@ -224,12 +225,14 @@ namespace RssReader {
             // 
             // cbRegisterView
             // 
+            this.cbRegisterView.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRegisterView.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cbRegisterView.FormattingEnabled = true;
             this.cbRegisterView.Location = new System.Drawing.Point(236, 291);
             this.cbRegisterView.Name = "cbRegisterView";
             this.cbRegisterView.Size = new System.Drawing.Size(144, 24);
             this.cbRegisterView.TabIndex = 13;
+            this.cbRegisterView.SelectedIndexChanged += new System.EventHandler(this.cbRegisterView_SelectedIndexChanged);
             // 
             // label3
             // 
