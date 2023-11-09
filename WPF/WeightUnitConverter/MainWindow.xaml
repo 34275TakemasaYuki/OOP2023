@@ -1,0 +1,34 @@
+﻿<Window x:Class="WeightUnitConverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:WeightUnitConverter="clr-namespace:WeightUnitConverter"
+        mc:Ignorable="d"
+        Title="Sample converter" SizeToContent="WidthAndHeight" FontSize="20" FontFamily="Segoe UI Light">
+    <Window.DataContext>
+        <WeightUnitConverter:MainWindowViewModel />
+    </Window.DataContext>
+    <StackPanel Margin="4">
+        <StackPanel Orientation="Horizontal">
+            <TextBox Width="100" Margin="4" 
+                     Text="{Binding GramValue, StringFormat={}{0:N3}}" />
+            <ComboBox Width="80" Margin="4" 
+                      ItemsSource="{Binding Source={x:Static WeightUnitConverter:GramUnit.Units}}" 
+                      SelectedItem="{Binding CurrentGramUnit}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="40" Margin="4" Content="▲" Command="{Binding PondUnitToGram}"/>
+            <Button Width="40" Margin="4" Content="▼" Command="{Binding GramUnitToPond}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBox Width="100" Margin="4" 
+                     Text="{Binding PondValue, StringFormat={}{0:N3}}"/>
+            <ComboBox Width="80" Margin="4" 
+                      ItemsSource="{Binding Source={x:Static WeightUnitConverter:PondUnit.Units}}" 
+                      SelectedItem="{Binding CurrentPondUnit}"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
