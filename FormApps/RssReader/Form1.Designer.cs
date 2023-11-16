@@ -44,6 +44,11 @@ namespace RssReader {
             this.cbRegisterView = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.labelGuide = new System.Windows.Forms.Label();
+            this.btReset = new System.Windows.Forms.Button();
+            this.btListReset = new System.Windows.Forms.Button();
+            this.btRegisterReset = new System.Windows.Forms.Button();
+            this.btPrev = new System.Windows.Forms.Button();
+            this.btNext = new System.Windows.Forms.Button();
             this.gbGenre.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,19 +62,20 @@ namespace RssReader {
             // 
             // btGet
             // 
-            this.btGet.Location = new System.Drawing.Point(578, 12);
+            this.btGet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btGet.Location = new System.Drawing.Point(558, 12);
             this.btGet.Name = "btGet";
             this.btGet.Size = new System.Drawing.Size(75, 31);
             this.btGet.TabIndex = 1;
             this.btGet.Text = "取得";
-            this.btGet.UseVisualStyleBackColor = true;
+            this.btGet.UseVisualStyleBackColor = false;
             this.btGet.Click += new System.EventHandler(this.btGet_Click);
             // 
             // lbRssTitle
             // 
             this.lbRssTitle.FormattingEnabled = true;
             this.lbRssTitle.ItemHeight = 12;
-            this.lbRssTitle.Location = new System.Drawing.Point(12, 341);
+            this.lbRssTitle.Location = new System.Drawing.Point(12, 363);
             this.lbRssTitle.Name = "lbRssTitle";
             this.lbRssTitle.Size = new System.Drawing.Size(368, 316);
             this.lbRssTitle.TabIndex = 2;
@@ -77,17 +83,17 @@ namespace RssReader {
             // 
             // wbBrowser
             // 
-            this.wbBrowser.Location = new System.Drawing.Point(404, 65);
+            this.wbBrowser.Location = new System.Drawing.Point(404, 91);
             this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbBrowser.Name = "wbBrowser";
             this.wbBrowser.ScriptErrorsSuppressed = true;
-            this.wbBrowser.Size = new System.Drawing.Size(845, 592);
+            this.wbBrowser.Size = new System.Drawing.Size(845, 588);
             this.wbBrowser.TabIndex = 3;
             // 
             // tbInfo
             // 
             this.tbInfo.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbInfo.Location = new System.Drawing.Point(805, 12);
+            this.tbInfo.Location = new System.Drawing.Point(708, 12);
             this.tbInfo.Name = "tbInfo";
             this.tbInfo.Size = new System.Drawing.Size(444, 31);
             this.tbInfo.TabIndex = 4;
@@ -158,13 +164,14 @@ namespace RssReader {
             // 
             // btRegister
             // 
+            this.btRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btRegister.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btRegister.Location = new System.Drawing.Point(329, 213);
+            this.btRegister.Location = new System.Drawing.Point(329, 206);
             this.btRegister.Name = "btRegister";
-            this.btRegister.Size = new System.Drawing.Size(51, 52);
+            this.btRegister.Size = new System.Drawing.Size(51, 64);
             this.btRegister.TabIndex = 6;
             this.btRegister.Text = "登録";
-            this.btRegister.UseVisualStyleBackColor = true;
+            this.btRegister.UseVisualStyleBackColor = false;
             this.btRegister.Click += new System.EventHandler(this.btRegister_Click);
             // 
             // label1
@@ -228,9 +235,9 @@ namespace RssReader {
             this.cbRegisterView.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRegisterView.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cbRegisterView.FormattingEnabled = true;
-            this.cbRegisterView.Location = new System.Drawing.Point(236, 291);
+            this.cbRegisterView.Location = new System.Drawing.Point(12, 330);
             this.cbRegisterView.Name = "cbRegisterView";
-            this.cbRegisterView.Size = new System.Drawing.Size(144, 24);
+            this.cbRegisterView.Size = new System.Drawing.Size(342, 24);
             this.cbRegisterView.TabIndex = 13;
             this.cbRegisterView.SelectedIndexChanged += new System.EventHandler(this.cbRegisterView_SelectedIndexChanged);
             // 
@@ -248,17 +255,75 @@ namespace RssReader {
             // 
             this.labelGuide.AutoSize = true;
             this.labelGuide.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelGuide.Location = new System.Drawing.Point(736, 15);
+            this.labelGuide.Location = new System.Drawing.Point(639, 15);
             this.labelGuide.Name = "labelGuide";
             this.labelGuide.Size = new System.Drawing.Size(63, 24);
             this.labelGuide.TabIndex = 15;
             this.labelGuide.Text = "ガイド";
+            // 
+            // btReset
+            // 
+            this.btReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btReset.Location = new System.Drawing.Point(1174, 10);
+            this.btReset.Name = "btReset";
+            this.btReset.Size = new System.Drawing.Size(75, 33);
+            this.btReset.TabIndex = 16;
+            this.btReset.Text = "全てリセット";
+            this.btReset.UseVisualStyleBackColor = false;
+            this.btReset.Click += new System.EventHandler(this.btReset_Click);
+            // 
+            // btListReset
+            // 
+            this.btListReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btListReset.Location = new System.Drawing.Point(238, 291);
+            this.btListReset.Name = "btListReset";
+            this.btListReset.Size = new System.Drawing.Size(116, 24);
+            this.btListReset.TabIndex = 17;
+            this.btListReset.Text = "表示をリセット";
+            this.btListReset.UseVisualStyleBackColor = false;
+            this.btListReset.Click += new System.EventHandler(this.btListReset_Click);
+            // 
+            // btRegisterReset
+            // 
+            this.btRegisterReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btRegisterReset.Location = new System.Drawing.Point(207, 179);
+            this.btRegisterReset.Name = "btRegisterReset";
+            this.btRegisterReset.Size = new System.Drawing.Size(116, 26);
+            this.btRegisterReset.TabIndex = 18;
+            this.btRegisterReset.Text = "表示をリセット";
+            this.btRegisterReset.UseVisualStyleBackColor = false;
+            this.btRegisterReset.Click += new System.EventHandler(this.btRegisterReset_Click);
+            // 
+            // btPrev
+            // 
+            this.btPrev.Location = new System.Drawing.Point(404, 49);
+            this.btPrev.Name = "btPrev";
+            this.btPrev.Size = new System.Drawing.Size(94, 35);
+            this.btPrev.TabIndex = 19;
+            this.btPrev.Text = "前の記事へ";
+            this.btPrev.UseVisualStyleBackColor = true;
+            this.btPrev.Click += new System.EventHandler(this.btPrev_Click);
+            // 
+            // btNext
+            // 
+            this.btNext.Location = new System.Drawing.Point(1162, 49);
+            this.btNext.Name = "btNext";
+            this.btNext.Size = new System.Drawing.Size(87, 34);
+            this.btNext.TabIndex = 20;
+            this.btNext.Text = "次の記事へ";
+            this.btNext.UseVisualStyleBackColor = true;
+            this.btNext.Click += new System.EventHandler(this.btNext_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1272, 691);
+            this.Controls.Add(this.btNext);
+            this.Controls.Add(this.btPrev);
+            this.Controls.Add(this.btRegisterReset);
+            this.Controls.Add(this.btListReset);
+            this.Controls.Add(this.btReset);
             this.Controls.Add(this.labelGuide);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbRegisterView);
@@ -307,6 +372,11 @@ namespace RssReader {
         private System.Windows.Forms.ComboBox cbRegisterView;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelGuide;
+        private System.Windows.Forms.Button btReset;
+        private System.Windows.Forms.Button btListReset;
+        private System.Windows.Forms.Button btRegisterReset;
+        private System.Windows.Forms.Button btPrev;
+        private System.Windows.Forms.Button btNext;
     }
 }
 

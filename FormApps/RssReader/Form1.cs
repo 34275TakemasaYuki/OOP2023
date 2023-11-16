@@ -34,6 +34,107 @@ namespace RssReader {
 
         List<ItemData> ItemDatas = new List<ItemData>();
         private void btGet_Click(object sender, EventArgs e) {
+            getURL();
+        }
+
+
+        private void Form1_Load(object sender, EventArgs e) {
+            tbInfo.Text = "左にURLを入力してください";
+        }
+
+        private void lbRssTitle_Click(object sender, EventArgs e) {
+            if (lbRssTitle.Items.Count != 0)
+            {
+                wbBrowser.Navigate(ItemDatas[lbRssTitle.SelectedIndex].Link);
+                tbRegisterName.Text = ItemDatas[lbRssTitle.SelectedIndex].Title;
+                tbRegisterURL.Text = ItemDatas[lbRssTitle.SelectedIndex].Link;
+            }
+            else
+            {
+                tbInfo.Text = "選択する項目がありません";
+            }
+        }
+
+        private void rbIT_CheckedChanged(object sender, EventArgs e) {
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/topics/it.xml";
+            getURL();
+        }
+
+        private void rbEntertainment_CheckedChanged(object sender, EventArgs e) {
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/topics/entertainment.xml";
+            getURL();
+        }
+
+        private void rbBusiness_CheckedChanged(object sender, EventArgs e) {
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/topics/business.xml";
+            getURL();
+        }
+
+        private void rbDomestic_CheckedChanged(object sender, EventArgs e) {
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/categories/domestic.xml";
+            getURL();
+        }
+
+        private void btRegister_Click(object sender, EventArgs e) {
+            if (!tbRegisterURL.Text.Equals("") && !tbRegisterName.Text.Equals(""))
+            {
+                //ListBoxの中身がある時に限って実行
+                if (lbRssTitle.Items.Count != 0 && tbRegisterName.Text == null && tbRegisterURL.Text == null)
+                {
+                    tbRegisterName.Text = lbRssTitle.SelectedItem.ToString();
+                    tbRegisterURL.Text = ItemDatas[lbRssTitle.SelectedIndex].Link;
+                };
+
+                favoriteSet favorite = new favoriteSet(tbRegisterURL.Text, tbRegisterName.Text);
+
+                //Dictionaryにすでに情報が登録されていた場合
+                if (favoriteDict.ContainsKey(tbRegisterURL.Text) || favoriteDict.ContainsValue(tbRegisterName.Text))
+                {
+                    tbInfo.Text = "名前かURLが登録データと重複しています";
+                }
+                else
+                {
+                    cbRegisterView.Items.Add(favorite);
+                    favoriteDict.Add(tbRegisterURL.Text, tbRegisterName.Text);
+                    tbInfo.Text = "お気に入りデータが登録されました";
+                }
+            }
+            else
+            {
+                tbInfo.Text = "URLと名前を入力してください";
+            }
+        }
+
+        private void cbRegisterView_SelectedIndexChanged(object sender, EventArgs e) {
+            favoriteSet favorite = (favoriteSet)cbRegisterView.SelectedItem;
+
+            //取得したURLがカテゴリではなく記事のURLだったら
+            if (favorite.Key.Contains("pickup"))
+            {
+                //直接記事を表示
+                wbBrowser.Navigate(favorite.Key);
+            }
+            else
+            {
+                tbUrl.Text = favorite.Key.ToString();
+            }
+        }
+
+        private void btReset_Click(object sender, EventArgs e) {
+            tbUrl.Text = "";
+            tbInfo.Text = "";
+            tbRegisterName.Text = "";
+            tbRegisterURL.Text = "";
+            lbRssTitle.Items.Clear();
+            cbRegisterView.Items.Clear();
+            wbBrowser.DocumentText = "";
+        }
+
+        private void btListReset_Click(object sender, EventArgs e) {
+            lbRssTitle.Items.Clear();
+        }
+
+        public void getURL() {
             if (tbUrl.TextLength != 0)
             {
                 using (var wc = new WebClient())
@@ -68,58 +169,31 @@ namespace RssReader {
             }
         }
 
-
-        private void Form1_Load(object sender, EventArgs e) {
-            tbInfo.Text = "左にURLを入力してください";
+        private void btRegisterReset_Click(object sender, EventArgs e) {
+            tbRegisterName.Text = "";
+            tbRegisterURL.Text = "";
         }
 
-        private void lbRssTitle_Click(object sender, EventArgs e) {
-            if (lbRssTitle.Items.Count != 0)
+        private void btNext_Click(object sender, EventArgs e) {
+            try
             {
-                wbBrowser.Navigate(ItemDatas[lbRssTitle.SelectedIndex].Link);
+                wbBrowser.Navigate(ItemDatas[++lbRssTitle.SelectedIndex].Link);
             }
-            else
+            catch (ArgumentOutOfRangeException)
             {
-                tbInfo.Text = "選択する項目がありません";
-            }
-        }
-
-        private void rbIT_CheckedChanged(object sender, EventArgs e) {
-            tbUrl.Text = "https://news.yahoo.co.jp/rss/topics/it.xml";
-        }
-
-        private void rbEntertainment_CheckedChanged(object sender, EventArgs e) {
-            tbUrl.Text = "https://news.yahoo.co.jp/rss/topics/entertainment.xml";
-        }
-
-        private void rbBusiness_CheckedChanged(object sender, EventArgs e) {
-            tbUrl.Text = "https://news.yahoo.co.jp/rss/topics/business.xml";
-        }
-
-        private void rbDomestic_CheckedChanged(object sender, EventArgs e) {
-            tbUrl.Text = "https://news.yahoo.co.jp/rss/categories/domestic.xml";
-        }
-
-        private void btRegister_Click(object sender, EventArgs e) {
-
-            favoriteSet favorite = new favoriteSet(tbRegisterURL.Text, tbRegisterName.Text);
-            if (favoriteDict.ContainsKey(tbRegisterURL.Text) || favoriteDict.ContainsValue(tbRegisterName.Text))
-            {
-                tbInfo.Text = "名前かURLが登録データと重複しています";
-            }
-            else
-            {
-                cbRegisterView.Items.Add(favorite);
-                favoriteDict.Add(tbRegisterURL.Text, tbRegisterName.Text);
-                tbInfo.Text = "お気に入りデータが登録されました";
+                return;
             }
         }
 
-        private void cbRegisterView_SelectedIndexChanged(object sender, EventArgs e) {
-            favoriteSet favorite = (favoriteSet)cbRegisterView.SelectedItem;
-            tbUrl.Text = favorite.Key.ToString();
-
-            
+        private void btPrev_Click(object sender, EventArgs e) {
+            try
+            {
+                wbBrowser.Navigate(ItemDatas[--lbRssTitle.SelectedIndex].Link);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                return;
+            }
         }
     }
 }
