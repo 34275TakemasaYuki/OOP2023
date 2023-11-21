@@ -13,6 +13,7 @@ using System.Xml;
 using System.Xml.Serialization;
 
 namespace CarReportSystem {
+    //完成版はCarReportDBの方に記載
     public partial class Form1 : Form {
         //管理用データ
         BindingList<CarReport> CarReports = new BindingList<CarReport>();
@@ -352,7 +353,7 @@ namespace CarReportSystem {
         }
 
         private void btReset_Click(object sender, EventArgs e) {
-            carReportTableTableAdapter.Fill(this.infosys202327DataSet.CarReportTable);
+            carReportTableTableAdapter.Fill(this.infosys202327DataSet.CarReportTable);*/
         }
     }
 }

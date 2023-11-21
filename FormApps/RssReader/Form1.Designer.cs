@@ -45,7 +45,7 @@ namespace RssReader {
             this.label3 = new System.Windows.Forms.Label();
             this.labelGuide = new System.Windows.Forms.Label();
             this.btReset = new System.Windows.Forms.Button();
-            this.btListReset = new System.Windows.Forms.Button();
+            this.btComboBoxRemove = new System.Windows.Forms.Button();
             this.btRegisterReset = new System.Windows.Forms.Button();
             this.btPrev = new System.Windows.Forms.Button();
             this.btNext = new System.Windows.Forms.Button();
@@ -272,16 +272,16 @@ namespace RssReader {
             this.btReset.UseVisualStyleBackColor = false;
             this.btReset.Click += new System.EventHandler(this.btReset_Click);
             // 
-            // btListReset
+            // btComboBoxRemove
             // 
-            this.btListReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btListReset.Location = new System.Drawing.Point(238, 291);
-            this.btListReset.Name = "btListReset";
-            this.btListReset.Size = new System.Drawing.Size(116, 24);
-            this.btListReset.TabIndex = 17;
-            this.btListReset.Text = "表示をリセット";
-            this.btListReset.UseVisualStyleBackColor = false;
-            this.btListReset.Click += new System.EventHandler(this.btListReset_Click);
+            this.btComboBoxRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btComboBoxRemove.Location = new System.Drawing.Point(238, 291);
+            this.btComboBoxRemove.Name = "btComboBoxRemove";
+            this.btComboBoxRemove.Size = new System.Drawing.Size(116, 24);
+            this.btComboBoxRemove.TabIndex = 17;
+            this.btComboBoxRemove.Text = "ページの削除";
+            this.btComboBoxRemove.UseVisualStyleBackColor = false;
+            this.btComboBoxRemove.Click += new System.EventHandler(this.btComboBoxRemove_Click);
             // 
             // btRegisterReset
             // 
@@ -322,7 +322,7 @@ namespace RssReader {
             this.Controls.Add(this.btNext);
             this.Controls.Add(this.btPrev);
             this.Controls.Add(this.btRegisterReset);
-            this.Controls.Add(this.btListReset);
+            this.Controls.Add(this.btComboBoxRemove);
             this.Controls.Add(this.btReset);
             this.Controls.Add(this.labelGuide);
             this.Controls.Add(this.label3);
@@ -341,8 +341,9 @@ namespace RssReader {
             this.Controls.Add(this.btGet);
             this.Controls.Add(this.tbUrl);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "RssReader";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.gbGenre.ResumeLayout(false);
             this.gbGenre.PerformLayout();
             this.ResumeLayout(false);
@@ -373,7 +374,7 @@ namespace RssReader {
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelGuide;
         private System.Windows.Forms.Button btReset;
-        private System.Windows.Forms.Button btListReset;
+        private System.Windows.Forms.Button btComboBoxRemove;
         private System.Windows.Forms.Button btRegisterReset;
         private System.Windows.Forms.Button btPrev;
         private System.Windows.Forms.Button btNext;

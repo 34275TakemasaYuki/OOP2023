@@ -40,6 +40,7 @@ namespace RssReader {
 
         private void Form1_Load(object sender, EventArgs e) {
             tbInfo.Text = "左にURLを入力してください";
+            tbInfo.ReadOnly = true;
         }
 
         private void lbRssTitle_Click(object sender, EventArgs e) {
@@ -71,7 +72,7 @@ namespace RssReader {
         }
 
         private void rbDomestic_CheckedChanged(object sender, EventArgs e) {
-            tbUrl.Text = "https://news.yahoo.co.jp/rss/categories/domestic.xml";
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/topics/domestic.xml";
             getURL();
         }
 
@@ -79,11 +80,11 @@ namespace RssReader {
             if (!tbRegisterURL.Text.Equals("") && !tbRegisterName.Text.Equals(""))
             {
                 //ListBoxの中身がある時に限って実行
-                if (lbRssTitle.Items.Count != 0 && tbRegisterName.Text == null && tbRegisterURL.Text == null)
-                {
-                    tbRegisterName.Text = lbRssTitle.SelectedItem.ToString();
-                    tbRegisterURL.Text = ItemDatas[lbRssTitle.SelectedIndex].Link;
-                };
+                //if (lbRssTitle.Items.Count != 0 && tbRegisterName.Text == null && tbRegisterURL.Text == null)
+                //{
+                //    tbRegisterName.Text = lbRssTitle.SelectedItem.ToString();
+                //    tbRegisterURL.Text = ItemDatas[lbRssTitle.SelectedIndex].Link;
+                //};
 
                 favoriteSet favorite = new favoriteSet(tbRegisterURL.Text, tbRegisterName.Text);
 
@@ -107,7 +108,6 @@ namespace RssReader {
 
         private void cbRegisterView_SelectedIndexChanged(object sender, EventArgs e) {
             favoriteSet favorite = (favoriteSet)cbRegisterView.SelectedItem;
-
             //取得したURLがカテゴリではなく記事のURLだったら
             if (favorite.Key.Contains("pickup"))
             {
@@ -117,6 +117,7 @@ namespace RssReader {
             else
             {
                 tbUrl.Text = favorite.Key.ToString();
+                getURL();
             }
         }
 
@@ -128,10 +129,6 @@ namespace RssReader {
             lbRssTitle.Items.Clear();
             cbRegisterView.Items.Clear();
             wbBrowser.DocumentText = "";
-        }
-
-        private void btListReset_Click(object sender, EventArgs e) {
-            lbRssTitle.Items.Clear();
         }
 
         public void getURL() {
@@ -194,6 +191,23 @@ namespace RssReader {
             {
                 return;
             }
+        }
+
+        private void btComboBoxRemove_Click(object sender, EventArgs e) {
+            favoriteSet favorite = (favoriteSet)cbRegisterView.SelectedItem;
+            if (favorite != null)
+            {
+                favoriteDict.Remove(favorite.Key);
+                cbRegisterView.Items.RemoveAt(cbRegisterView.SelectedIndex);
+            }
+            else
+            {
+                tbInfo.Text = "削除する項目が存在しません";
+            }
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e) {
+            
         }
     }
 }
